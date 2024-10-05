@@ -1,0 +1,116 @@
+.card {
+    width: 90px;
+    height: 180px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.card:hover {
+    outline: 1px solid yellow;
+}
+
+.card-selected {
+    outline: 5px solid yellow;
+}
+
+.card-selected:hover {
+    outline: 5px solid yellow;
+}
+
+.card-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.title {
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.text {
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.icon {
+    width: 12px;
+    height: 12px;
+}
+
+.atk {
+    width: 70px;
+    height: 20px;
+    background: linear-gradient(to right, #9E7771, #FF2200);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    margin-bottom: 5px;
+}
+
+.hearth {
+    width: 70px;
+    height: 20px;
+    background: linear-gradient(to right, #72B140, #314B1B);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    padding: 0 5px;
+}
+
+/*Botões*/
+
+.container-select-options{
+    position: absolute;
+    bottom: 190px;
+    display: flex;
+}
+
+.btn {
+    width: 60px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.btn-atk {
+    background: linear-gradient(to right, #EE0000, #FF2200);
+}
+
+.btn-atk:hover {
+    background: linear-gradient(to left, #EE0000, #FF2200);
+}
+
+.btn-dice {
+    background: linear-gradient(to right, #72B140, #314B1B);
+}
+
+.btn-dice:hover {
+    background: linear-gradient(to left, #72B140, #314B1B);
+}
+
+.btn-details {
+    background: linear-gradient(to right, #515460, #1D3FC7);
+}
+
+.btn-details:hover {
+    background: linear-gradient(to left, #515460, #1D3FC7);
+}
+
+.text-btn {
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}

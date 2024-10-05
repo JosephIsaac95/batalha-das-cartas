@@ -1,0 +1,142 @@
+<div class="background-image-div">
+    <!-- Mensagens em cima na esquerda -->
+    <div class="container-info">
+        <div class="info">
+            <p>Turno 1</p>
+        </div>
+    </div>
+    <!-- Campo de Batalha -->
+    <!-- Oponente -->
+    <div class="space-opponent-cards">
+        <div class="space-card"></div>
+        <div class="space-card"></div>
+        <div class="space-card"></div>    
+    </div>
+    <!-- Campo Oponente -->
+    <div class="space-battle-cards-opponent">
+        <div class="space-card"></div>
+        <div class="space-card"></div>
+        <div class="space-card"></div>
+        <div class="space-card"></div>
+        <div class="space-card"></div>
+    </div>
+    <!-- Campo Aliado -->
+    <div class="space-battle-cards-ally">
+        <div class="space-card"></div>
+        <div class="space-card"></div>
+        <div class="space-card"></div>
+        <div class="space-card"></div>
+        <div class="space-card"></div>
+    </div>
+    <!-- Aliado -->
+    <div class="space-ally-cards">
+        <div class="space-card" *ngFor="let card of allyCards">
+            <mini-card 
+                [character]="card"
+                (characterDetails)="showDetails($event)"
+                (rollDice)="rollDice(2)"
+            ></mini-card>
+        </div>
+    </div>
+    <!-- Mensagens em baixo na esquerda -->
+    <div class="buff-debuff-msg">
+        <p class="my-turn-text">Buff</p>
+        <p class="text">/</p>
+        <p class="your-turn-text">Debuff:&nbsp;</p>
+        <p class="text">Nenhum</p>
+    </div>
+    <div class="info-msg">
+        <p class="my-turn-text">Sua vez:&nbsp;</p>
+        <p class="text">Escolha uma carta para atacar</p>
+    </div>
+    <!-- Dado do Oponente-->
+    <div class="opponent-dice-area">
+        <div class="opponent-dice-text-area">
+            <p class="text">Oponente</p>
+        </div> 
+        <div class="scene">
+            <div class="cube" [ngStyle]="{'transform': 'rotateX(' + rotateX1 + 'deg) rotateY(' + rotateY1 + 'deg)'}">
+                <div class="cube-face cube-face-opponent front">
+                    <div class="dot dot0"></div>
+                </div>
+                <div class="cube-face cube-face-opponent back">
+                    <div class="dot dot1"></div>
+                    <div class="dot dot2"></div>
+                    <div class="dot dot3"></div>
+                    <div class="dot dot4"></div>
+                    <div class="dot dot5"></div>
+                    <div class="dot dot6"></div>
+                </div>
+                <div class="cube-face cube-face-opponent right">
+                    <div class="dot dot0"></div>
+                    <div class="dot dot1"></div>
+                    <div class="dot dot6"></div>
+                </div>
+                <div class="cube-face cube-face-opponent left">
+                    <div class="dot dot1"></div>
+                    <div class="dot dot2"></div>
+                    <div class="dot dot5"></div>
+                    <div class="dot dot6"></div>
+                </div>
+                <div class="cube-face cube-face-opponent top">
+                    <div class="dot dot1"></div>
+                    <div class="dot dot6"></div>
+                </div>
+                <div class="cube-face cube-face-opponent bottom">
+                    <div class="dot dot0"></div>
+                    <div class="dot dot1"></div>
+                    <div class="dot dot2"></div>
+                    <div class="dot dot5"></div>
+                    <div class="dot dot6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dado do Jogador -->
+    <div class="ally-dice-area">
+        <div class="ally-dice-text-area">
+            <p class="text">Seu dado</p>
+        </div> 
+        <div class="scene-ally">
+            <div class="cube" [ngStyle]="{'transform': 'rotateX(' + rotateX2 + 'deg) rotateY(' + rotateY2 + 'deg)'}">
+                <div class="cube-face cube-face-ally front">
+                    <div class="dot dot0"></div>
+                </div>
+                <div class="cube-face cube-face-ally back">
+                    <div class="dot dot1"></div>
+                    <div class="dot dot2"></div>
+                    <div class="dot dot3"></div>
+                    <div class="dot dot4"></div>
+                    <div class="dot dot5"></div>
+                    <div class="dot dot6"></div>
+                </div>
+                <div class="cube-face cube-face-ally right">
+                    <div class="dot dot0"></div>
+                    <div class="dot dot1"></div>
+                    <div class="dot dot6"></div>
+                </div>
+                <div class="cube-face cube-face-ally left">
+                    <div class="dot dot1"></div>
+                    <div class="dot dot2"></div>
+                    <div class="dot dot5"></div>
+                    <div class="dot dot6"></div>
+                </div>
+                <div class="cube-face cube-face-ally top">
+                    <div class="dot dot1"></div>
+                    <div class="dot dot6"></div>
+                </div>
+                <div class="cube-face cube-face-ally bottom">
+                    <div class="dot dot0"></div>
+                    <div class="dot dot1"></div>
+                    <div class="dot dot2"></div>
+                    <div class="dot dot5"></div>
+                    <div class="dot dot6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Card detalhado -->
+ <card-detail *ngIf="showCard" [character]="characterDetail" (closeDetails)="closeDetails()"></card-detail>

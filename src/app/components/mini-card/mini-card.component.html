@@ -1,0 +1,27 @@
+<button (click)="click()" [ngStyle]="{'background': gradient}" class="card" [ngClass]="{'card-selected':selected}">
+    <div class="container-select-options" *ngIf="selected">
+        <button class="btn btn-atk" (click)="optionSelected('atk')">
+            <p class="text-btn">Atacar!</p>
+        </button>
+        <button class="btn btn-dice" (click)="optionSelected('dice')">
+            <p class="text-btn">Girar Dado</p>
+        </button>
+        <button class="btn btn-details" (click)="optionSelected('details')">
+            <p class="text-btn">Detalhes</p>
+        </button>
+    </div>
+    <div>
+        <img  class="card-img" [src]="character.url" alt="Ninja Azul">
+        <p class="title">{{character.name}}</p>
+    </div>
+    <div>
+        <div class="atk">
+            <img class="icon" src="assets/icons/sword.png">
+            <p class="text">{{character.atk}}</p>
+        </div>
+        <div class="hearth">
+            <img class="icon" src="assets/icons/hearth.png">
+            <p class="text">{{character.health}}</p>
+        </div>
+    </div>
+</button>

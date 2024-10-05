@@ -1,0 +1,32 @@
+[
+    {
+        "url": "assets/cards/ninja-verde.jpeg",
+        "name": "Ninja Verde - Forte como Rocha",
+        "backgroundTop": "#2D3539",
+        "backgroundBottom": "#E5D0B1",
+        "atk": 12,
+        "health": 100,
+        "skillsAtk":[],
+        "skillsDefense":[]
+    },
+    {
+        "url": "assets/cards/ninja-branco.jpeg",
+        "name": "Ninja Branco - Mestre Silencioso",
+        "backgroundTop": "#2D3539",
+        "backgroundBottom": "#E5D0B1",
+        "atk": 8,
+        "health": 100,
+        "skillsAtk":[],
+        "skillsDefense":[]
+    },
+    {
+        "url": "assets/cards/ninja-roxa.jpeg",
+        "name": "Ninja Roxa - Olhos da Esperança",
+        "backgroundTop": "#202D80",
+        "backgroundBottom": "#F7B5E1",
+        "atk": 8,
+        "health": 100,
+        "skillsAtk":[],
+        "skillsDefense":[]
+    }
+]

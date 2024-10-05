@@ -1,0 +1,82 @@
+[
+    {
+        "url": "assets/cards/ninja-rosa.jpeg",
+        "name": "Ninja Rosa - Luz da Primavera",
+        "backgroundTop": "#EF7EAF",
+        "backgroundBottom": "#F7DEE2",
+        "atk": 15,
+        "health": 100,
+        "skillsAtk": [
+            {
+                "title": "1 - Exaustão: ",
+                "text": "A Ninja Rosa está exausta. Perdeu todos os seus buffs e não pode atacar essa rodada."
+            },
+            {
+                "title": "2 - Lentidão: ",
+                "text": "A Ninja Rosa é forte, mas é lenta. Ela não conseguirá atacar nessa rodada."
+            },
+            {
+                "title": "3 - Tanque de Guerra: ",
+                "text": "A Ninja Rosa tem uma força absurda. Cause o dobro de dano nessa batalha."
+            },
+            {
+                "title": "4 - Beleza Medicinal: ",
+                "text": "A Ninja Rosa traz cura para um aliado ou para si mesma. Cure em +30 o alvo."
+            },
+            {
+                "title": "5 - Grito do Socorro: ",
+                "text": "A Ninja Rosa chama um aliado para atacar nessa rodada. Ela e o aliado atacam o alvo selecionado. Se não tiver mais aliados, ela pode perder vida em -50 e ressuscitar um aliado. O aliado ganha vida em +25."
+            },
+            {
+                "title": "6 - Luz da Primavera: ",
+                "text": "A Ninja Rosa usa uma técnica proibida de imortalidade. Se seus pontos de vida chegariam a =0, ao invés disso, ela fica com vida =1 e ela não pode ser destruída nessa rodada. Se o dado cair nessa habilidade, a habilidade é acumulada. Se a vida chegaria a =0, então consuma um acúmulo."
+            }
+        ],
+        "skillsDefense": [
+            {
+                "title": "1 - Tanque de Guerra: ",
+                "text": "A Ninja Rosa está exausta. Perdeu todos os seus buffs e não pode atacar essa rodada."
+            },
+            {
+                "title": "2 - Lentidão: ",
+                "text": "A Ninja Rosa é forte, mas é lenta. Ela não conseguirá defender nessa rodada. O alvo está exposto."
+            },
+            {
+                "title": "3 - Exaustão: ",
+                "text": "A Ninja Rosa tem uma força defensiva absurda. Ela recebe todo o dano da batalha e se cura em +15."
+            },
+            {
+                "title": "4 - Beleza Medicinal: ",
+                "text": "A Ninja Rosa traz cura para um aliado ou para si mesma. Cure em +30 o alvo."
+            },
+            {
+                "title": "5 - Grito do Socorro: ",
+                "text": "A Ninja Rosa chama um aliado para atacar nessa rodada. Ela e o aliado atacam o alvo selecionado. Se não tiver mais aliados, ela pode perder vida em -50 e ressuscitar um aliado. O aliado ganha vida em +25."
+            },
+            {
+                "title": "6 - Luz da Primavera: ",
+                "text": "A Ninja Rosa usa uma técnica proibida de imortalidade. Se seus pontos de vida chegariam a =0, ao invés disso, ela fica com vida =1 e ela não pode ser destruída nessa rodada. Se o dado cair nessa habilidade, a habilidade é acumulada. Se a vida chegaria a =0, então consuma um acúmulo."
+            }
+        ]
+    },
+    {
+        "url": "assets/cards/ninja-azul.jpeg",
+        "name": "Ninja Azul - Sombra da Noite",
+        "backgroundTop": "#364D83",
+        "backgroundBottom": "#E1BDA3",
+        "atk": 7,
+        "health": 100,
+        "skillsAtk":[],
+        "skillsDefense":[]
+    },
+    {
+        "url": "assets/cards/ninja-laranja.jpeg",
+        "name": "Ninja Laranja - Coração Valente",
+        "backgroundTop": "#FF0000",
+        "backgroundBottom": "#FDFF6B",
+        "atk": 10,
+        "health": 100,
+        "skillsAtk":[],
+        "skillsDefense":[]
+    }
+]

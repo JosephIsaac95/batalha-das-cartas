@@ -1,0 +1,34 @@
+<div class="modal">
+    <div class="card" [ngStyle]="{'background': gradient}" class="card" [ngClass]="{'card-selected':selected}">
+        <div>
+            <img  class="card-img" [src]="character.url" alt="Ninja Azul">
+            <p class="title">{{character.name}}</p>
+        </div>
+        <div *ngIf="!defending" class="skills">
+            <div *ngFor="let skill of character.skillsAtk">
+                <span class="skill-text-container">
+                    <b class="skill-number">{{skill.title}}</b>
+                    <p class="skill-text">{{skill.text}}</p>
+                </span>
+            </div>
+        </div>
+        <div *ngIf="defending" class="skills">        
+            <div  *ngFor="let skill of character.skillsDefense">
+                <span class="skill-text-container">
+                    <b class="skill-number">{{skill.title}}</b>
+                    <p class="skill-text">{{skill.text}}</p>
+                </span>
+            </div>
+        </div>
+        <div class="card-info">
+            <div class="atk">
+                <img class="icon" src="assets/icons/sword.png">
+                <p class="text">{{character.atk}}</p>
+            </div>
+            <div class="hearth">
+                <img class="icon" src="assets/icons/hearth.png">
+                <p class="text">{{character.health}}</p>
+            </div>
+        </div>
+    </div>
+</div>

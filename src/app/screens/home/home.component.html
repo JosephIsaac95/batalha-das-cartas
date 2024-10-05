@@ -1,0 +1,51 @@
+<div class="background-image-div">
+  <p class="title">Escolha uma equipe e comece a jogar</p>
+  <div class="select-team">
+    <div>
+      <button
+        class="team team-left"
+        [ngClass]="{'selected': selectedButtonIndex === 0}"
+        (click)="selectedButtonIndex === 0? selectButton(-1) : selectButton(0)"
+        >
+        <div class="container-rosa">
+          <img class="ninja-rosa character" src="assets/sem-fundo/ninja-rosa.png" alt="Ninja Rosa">
+        </div>
+        <div class="container-azul">
+          <img class="ninja-azul character" src="assets/sem-fundo/ninja-azul.png" alt="Ninja Azul">
+        </div>
+        <div class="container-laranja">
+          <img class="ninja-laranja character" src="assets/sem-fundo/ninja-laranja.png" alt="Ninja Laranja">
+        </div>
+      </button>
+      <p class="team-text">Equipe 1</p>
+    </div>
+
+    <div>
+      <button 
+        class="team team-right"
+        [ngClass]="{'selected': selectedButtonIndex === 1}"
+        (click)="selectedButtonIndex === 1? selectButton(-1) : selectButton(1)"
+        >
+        <div class="container-verde">
+          <img class="ninja-verde character" src="assets/sem-fundo/ninja-verde.png" alt="Ninja Verde">
+        </div>
+        <div class="container-branco">
+          <img class="ninja-branco character" src="assets/sem-fundo/ninja-branco.png" alt="Ninja Branco">
+        </div>
+        <div class="container-roxa">
+          <img class="ninja-roxa character" src="assets/sem-fundo/ninja-roxa.png" alt="Ninja Roxa">
+        </div>
+      </button>
+      <p class="team-text">Equipe 2</p>
+    </div>
+  </div>
+  <div class="container-play">
+    <button 
+      class="button" 
+      [ngClass]="{'button-disable': selectedButtonIndex === -1}"
+      (click)="goToBattle()"
+    >
+      <p>JOGAR</p>
+    </button>
+  </div>
+  </div>
