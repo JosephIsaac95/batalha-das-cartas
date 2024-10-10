@@ -8,9 +8,16 @@
     <!-- Campo de Batalha -->
     <!-- Oponente -->
     <div class="space-opponent-cards">
-        <div class="space-card"></div>
-        <div class="space-card"></div>
-        <div class="space-card"></div>    
+        <div class="space-card" *ngFor="let card of opponentCards">
+            <mini-card 
+                [character]="card"
+                (characterDetails)="showDetails($event)"
+                (rollDice)="rollDice(2)"
+                [ally]="false"
+                [battle]="battle"
+                (foiAtacado)="foiAtacado($event)"
+            ></mini-card>
+        </div>
     </div>
     <!-- Campo Oponente -->
     <div class="space-battle-cards-opponent">
@@ -35,19 +42,31 @@
                 [character]="card"
                 (characterDetails)="showDetails($event)"
                 (rollDice)="rollDice(2)"
+                [ally]="true"
+                (attack)="attackAction($event)"
+                [battle]="battle"
             ></mini-card>
         </div>
     </div>
     <!-- Mensagens em baixo na esquerda -->
-    <div class="buff-debuff-msg">
-        <p class="my-turn-text">Buff</p>
-        <p class="text">/</p>
-        <p class="your-turn-text">Debuff:&nbsp;</p>
-        <p class="text">Nenhum</p>
+    <div class="fases" *ngIf="!turnoOponente">
+        <button class="btn-fases btn-compra" (click)="onAcction(0)" [ngClass]="{'btn-ativo-compra': acction === 0,  'forbidden-action': acction > 0}">
+            <p class="my-turn-text txt-compra">Fase de Compra</p>
+        </button>
+        <button class="btn-fases btn-itens" (click)="onAcction(1)" [ngClass]="{'btn-ativo-itens': acction === 1,  'forbidden-action': acction > 1}">
+            <p class="my-turn-text txt-itens">Use seus itens</p>
+        </button>
+        <button class="btn-fases btn-batalha" (click)="onAcction(2)" [ngClass]="{'btn-ativo-batalha': acction === 2,  'forbidden-action': acction > 2}">
+            <p class="my-turn-text txt-batalha">Vá para a Batalha</p>
+        </button>
+        <button class="btn-fases btn-fim" (click)="onAcction(3)" [ngClass]="{'btn-ativo-fim': acction === 3}">
+            <p class="my-turn-text txt-fim">Finalize sua jogada</p> 
+        </button>
     </div>
-    <div class="info-msg">
-        <p class="my-turn-text">Sua vez:&nbsp;</p>
-        <p class="text">Escolha uma carta para atacar</p>
+    <div class="fases" *ngIf="turnoOponente">
+        <button class="btn-fases btn-batalha btn-ativo-batalha no-hover">
+            <p class="my-turn-text txt-batalha">Vez do Oponente</p>
+        </button>
     </div>
     <!-- Dado do Oponente-->
     <div class="opponent-dice-area">
@@ -139,4 +158,13 @@
 </div>
 
 <!-- Card detalhado -->
- <card-detail *ngIf="showCard" [character]="characterDetail" (closeDetails)="closeDetails()"></card-detail>
+<card-detail *ngIf="showCard" [character]="characterDetail" (closeDetails)="closeDetails()" [attackAnimation]="attackAnimation"></card-detail>
+
+<!-- Mensagens de batalha-->
+<messages-battle *ngIf="showMsg" [msg]="msg"></messages-battle>
+
+<!-- Som da batalha-->
+ 
+<audio autoplay loop>
+    <source src="assets/sounds/battle-song.mp3" type="audio/mp3">
+</audio>

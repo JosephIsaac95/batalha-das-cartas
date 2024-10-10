@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, EventEmitter, ElementRef, HostListener } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter, ElementRef, HostListener, OnChanges } from '@angular/core';
 import { Character } from 'src/app/interfaces/character';
 
 @Component({
@@ -6,18 +6,33 @@ import { Character } from 'src/app/interfaces/character';
   templateUrl: './mini-card.component.html',
   styleUrls: ['./mini-card.component.css']
 })
-export class MiniCardComponent implements OnInit {
+export class MiniCardComponent implements OnInit, OnChanges {
 
   @Output() characterDetails = new EventEmitter<Character>();
   @Output() rollDice = new EventEmitter<Character>()
+  @Output() attack = new EventEmitter<Character>()
+  @Output() foiAtacado = new EventEmitter<Character>()
   @Input() character: Character;
+  @Input() ally: boolean;
+  @Input() battle: boolean;
   defending: boolean = false;
   selected: boolean = false;
 
-  constructor(private elementRef: ElementRef) { }
+  characterSelectAudio: HTMLAudioElement;
+
+  constructor(private elementRef: ElementRef) { 
+  }
 
   ngOnInit() {
-    console.log('charcater', this.character)
+    console.log('ally', this.ally)
+    if(this.ally)
+      this.characterSelectAudio = new Audio('assets/sounds/menu-selection.mp3');
+    else
+      this.characterSelectAudio = new Audio('assets/sounds/punch2.mp3');
+  }
+  
+  ngOnChanges(){
+    console.log(this.character.name, this.battle, !this.battle && !this.ally);
   }
 
   get gradient(): string {
@@ -25,7 +40,12 @@ export class MiniCardComponent implements OnInit {
   }
 
   click(){
-    this.selected = true;
+    this.characterSelectAudio.play();
+    if(this.ally)
+      this.selected = true;
+    else{
+      this.foiAtacadoEmit();
+    }
   }
 
   @HostListener('document:click', ['$event'])
@@ -42,6 +62,7 @@ export class MiniCardComponent implements OnInit {
 
     switch(option){
       case 'atk':
+        this.attackEmit();
         break;
       case 'dice':
       this.rollDiceEmit();
@@ -58,5 +79,13 @@ export class MiniCardComponent implements OnInit {
 
   rollDiceEmit(){
     this.rollDice.emit(this.character);
+  }
+
+  attackEmit(){
+    this.attack.emit(this.character);
+  }
+
+  foiAtacadoEmit(){
+    this.foiAtacado.emit(this.character);
   }
 }

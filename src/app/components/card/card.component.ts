@@ -9,6 +9,7 @@ import { Character } from 'src/app/interfaces/character';
 export class CardComponent implements OnInit {
 
   @Input() character: Character;
+  @Input() attackAnimation: boolean;
   @Output() closeDetails = new EventEmitter();
   defending: boolean = false;
   cardUrl!: string;
@@ -18,6 +19,9 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     console.log('character Details', this.character)
+
+    setTimeout(()=>{this.attackAnimation = false;},1000);
+    setTimeout(()=>{this.closeDetails.emit();},2000)
   }
 
   get gradient(): string {

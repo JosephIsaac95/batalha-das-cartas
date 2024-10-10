@@ -1,4 +1,13 @@
-<button (click)="click()" [ngStyle]="{'background': gradient}" class="card" [ngClass]="{'card-selected':selected}">
+<button 
+    (click)="click()" 
+    [ngStyle]="{'background': gradient}" 
+    class="card" 
+    [ngClass]="{
+        'card-selected': selected && ally,
+        'no-hover': !battle && !ally,
+        'rotating-border': !ally && battle
+    }"
+>
     <div class="container-select-options" *ngIf="selected">
         <button class="btn btn-atk" (click)="optionSelected('atk')">
             <p class="text-btn">Atacar!</p>

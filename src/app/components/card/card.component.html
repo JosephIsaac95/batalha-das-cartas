@@ -1,4 +1,4 @@
-<div class="modal">
+<div class="modal"  [ngClass]="{'attacked': attackAnimation}">
     <div class="card" [ngStyle]="{'background': gradient}" class="card" [ngClass]="{'card-selected':selected}">
         <div>
             <img  class="card-img" [src]="character.url" alt="Ninja Azul">

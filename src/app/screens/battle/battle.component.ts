@@ -12,6 +12,10 @@ import teamTwo from '../../mock/team-two.json'
 export class BattleComponent implements OnInit {
 
   team: number | null = null;
+  battle: boolean = false;
+  attackAnimation: boolean = false;
+
+  acction: number = 0;
 
   rotateX1: number = 0;
   rotateY1: number = 0;
@@ -21,10 +25,15 @@ export class BattleComponent implements OnInit {
   result2: number | null = null;
 
   allyCards!: Character[];
-  enemyCards!: Character[];
+  opponentCards!: Character[];
 
   showCard:boolean = false;
+  
   characterDetail!: Character;
+  turnoOponente: boolean = false;
+
+  showMsg: boolean = false;
+  msg: string = ''
   
 
   rollDice(dado: number): void {
@@ -49,10 +58,10 @@ export class BattleComponent implements OnInit {
 
       if(this.team === 0){
         this.allyCards = teamOne
-        //this.enemyCards = teamTwo
+        this.opponentCards = teamTwo
       } else {
         this.allyCards = teamTwo
-        //this.enemyCards = teamOne
+        this.opponentCards = teamOne
       }
     })
   }
@@ -64,9 +73,49 @@ export class BattleComponent implements OnInit {
   showDetails(event: Character){
     this.showCard = true;
     this.characterDetail = event;
+    this.attackAnimation = false;
   }
 
   closeDetails(){
     this.showCard = false;
+  }
+
+  attackAction(event: Character){
+    this.battle = true;
+    this.msg = "Escolha o Oponente!";
+    this.showMsg = true;
+
+    setTimeout(()=>{
+      this.showMsg = false
+    }, 2000)
+  }
+
+  foiAtacado(character: Character){
+    this.showCard = true;
+    this.characterDetail = character;
+    this.attackAnimation = true;
+  }
+
+  onAcction(event){
+    switch(event){
+      case 0:
+        if(this.acction<=event)
+          this.acction = 0;
+        break;
+      case 1:
+        if(this.acction<=event)
+          this.acction = 1;
+        break;
+      case 2:
+        if(this.acction<=event)
+          this.acction = 2;
+        break;
+      case 3:
+        if(this.acction<=event)
+          this.acction = 3;
+        //setTimeout(()=>{this.turnoOponente = true;}, 1000);
+        
+        break;
+    }
   }
 }

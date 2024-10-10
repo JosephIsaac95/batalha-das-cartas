@@ -3,8 +3,10 @@ export interface Character {
     name: string;
     backgroundTop: string;
     backgroundBottom: string;
-    skillsAtk: Skill[];
-    skillsDefense: Skill[];
+    atk: number;
+    health: number;
+    skillsAtk?: Skill[];
+    skillsDefense?: Skill[];
 }
 
 interface Skill {

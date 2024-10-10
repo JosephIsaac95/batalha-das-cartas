@@ -56,23 +56,129 @@
     left: 10px;
 }
 
-.buff-debuff-msg {
-    border: 5px solid #737373;
-    background-color: #D9D9D9;
-    border-radius: 10px;
-    width: 380px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 10px;
+.fases {
     position: absolute;
-    bottom: 90px;
+    bottom: 10px;
     left: 10px;
 }
 
-.my-turn-text {
+.btn-fases {
+    border: 5px solid #186D6E;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    width: 200px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    margin-top: 10px;
+}
+
+.btn-compra {
+    border: 3px solid #186D6E;
+}
+
+.txt-compra {
     color: #186D6E;
+}
+
+.btn-ativo-compra {
+    background-color: #186D6E;
+
+    .txt-compra {
+        color: white;
+    }
+}
+
+.btn-itens {
+    border: 3px solid #058a3d;
+}
+
+
+.txt-itens {
+    color: #058a3d;
+}
+
+.btn-itens:hover {
+    background-color: #058a3d;
+    transition: all 0.5s;
+    cursor: pointer;
+    
+    .txt-itens {
+        color: white;
+    }
+}
+
+.btn-ativo-itens {
+    background-color: #058a3d;
+    
+    .txt-itens {
+        color: white;
+    }
+}
+
+.btn-batalha {
+    border: 3px solid red;
+}
+
+.txt-batalha {
+    color: red;
+}
+
+.btn-batalha:hover {
+    background-color: red;
+    transition: all 0.5s;
+    cursor: pointer;
+    
+    .txt-batalha {
+        color: white;
+    };
+}
+
+.btn-ativo-batalha {
+    background-color: red;
+
+    .txt-batalha {
+        color: white;
+    }
+}
+
+.no-hover {
+    pointer-events: none;
+}
+
+.forbidden-action {
+    pointer-events: none;
+}
+
+.btn-fim {
+    border: 3px solid blue;
+}
+
+.btn-ativo-fim {
+    background-color: blue;
+
+    .txt-fim {
+        color: white;
+    }
+}
+
+.btn-fim:hover {
+    background-color: blue;
+    transition: all 0.5s;
+    cursor: pointer;
+    
+    .txt-fim {
+        color: white;
+    };
+}
+
+.txt-fim {
+    color: blue;
+}
+
+.my-turn-text {
     font-weight: bold;
     font-size: 16px;
 }

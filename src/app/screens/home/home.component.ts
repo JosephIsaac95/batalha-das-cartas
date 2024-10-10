@@ -22,13 +22,11 @@ export class HomeComponent implements OnInit {
   }
   
   selectButton(index: number) {
-    console.log('selectButton', index)
     this.selectedButtonIndex = index;
     this.btnSelectTeamAudio.play();
   }
 
   goToBattle(){
-    
     this.load = true;
     this.btnPlayAudio.play();
     setTimeout(()=>{

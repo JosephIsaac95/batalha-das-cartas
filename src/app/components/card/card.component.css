@@ -23,6 +23,18 @@
     border: none;
 }
 
+.attacked {
+    animation: shake 0.5s infinite; /* Chacoalhar a carta durante o ataque */
+}
+
+@keyframes shake {
+    0% { transform: translate(0); }
+    25% { transform: translate(-5px, 5px); }
+    50% { transform: translate(5px, -5px); }
+    75% { transform: translate(-5px, -5px); }
+    100% { transform: translate(0); }
+}
+
 .card-img {
     width: 320px;
     height: 320px;

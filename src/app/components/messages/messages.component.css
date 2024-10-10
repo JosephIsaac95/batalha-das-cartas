@@ -1,0 +1,64 @@
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
+    z-index: 1000; /* Certifique-se de que o loader apareça acima de outros elementos */
+  }
+  
+.container-msg {
+    border: 6px solid #f3f3f3; /* Cor de fundo do círculo */
+    border-top: 6px solid #3498db; /* Cor da borda superior (efeito de giro) */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite; /* Animação de rotação */
+}
+
+  .message-container {
+    position: fixed; /* Fixa a mensagem na tela */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Para ficar na frente de outros elementos */
+    opacity: 1; /* Para garantir que o container esteja visível inicialmente */
+    animation: slide-in 1s forwards; /* Aplica a animação ao container */
+  }
+  
+  .message {
+    font-size: 48px; /* Tamanho da fonte grande */
+    color: white; /* Cor do texto */
+    opacity: 0; /* O texto começa invisível */
+    animation: fade-in 1s forwards 0.5s; /* Animação para o texto com um atraso */
+  }
+  
+  /* Animações */
+  @keyframes slide-in {
+    from {
+      transform: translate(-150%, -50%); /* Começa fora da tela, à esquerda */
+      opacity: 0; /* Começa invisível */
+    }
+    to {
+      transform: translate(-50%, -50%); /* Termina na posição central */
+      opacity: 1; /* Fica visível */
+    }
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0; /* Começa invisível */
+    }
+    to {
+      opacity: 1; /* Termina visível */
+    }
+  }
+  

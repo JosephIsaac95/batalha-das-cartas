@@ -7,6 +7,7 @@ import { HomeComponent } from './screens/home/home.component';
 import { BattleComponent } from './screens/battle/battle.component';
 import { CardComponent } from './components/card/card.component';
 import { MiniCardComponent } from './components/mini-card/mini-card.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MiniCardComponent } from './components/mini-card/mini-card.component';
     HomeComponent,
     BattleComponent,
     CardComponent,
-    MiniCardComponent
+    MiniCardComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
