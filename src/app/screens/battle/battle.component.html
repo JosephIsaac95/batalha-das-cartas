@@ -8,11 +8,11 @@
     <!-- Campo de Batalha -->
     <!-- Oponente -->
     <div class="space-opponent-cards">
-        <div class="space-card" *ngFor="let card of opponentCards">
+        <div class="space-card" *ngFor="let card of acctions.opponent">
             <mini-card 
                 [character]="card"
                 (characterDetails)="showDetails($event)"
-                (rollDice)="rollDice(2)"
+                (rollDice)="rollDice($event)"
                 [ally]="false"
                 [battle]="battle"
                 (foiAtacado)="foiAtacado($event)"
@@ -37,27 +37,24 @@
     </div>
     <!-- Aliado -->
     <div class="space-ally-cards">
-        <div class="space-card" *ngFor="let card of allyCards">
+        <div class="space-card" *ngFor="let card of acctions.ally">
             <mini-card 
                 [character]="card"
                 (characterDetails)="showDetails($event)"
-                (rollDice)="rollDice(2)"
+                (rollDice)="rollDice($event)"
                 [ally]="true"
-                (attack)="attackAction($event)"
+                (attack)="quemAtacou($event)"
                 [battle]="battle"
             ></mini-card>
         </div>
     </div>
     <!-- Mensagens em baixo na esquerda -->
     <div class="fases" *ngIf="!turnoOponente">
-        <button class="btn-fases btn-compra" (click)="onAcction(0)" [ngClass]="{'btn-ativo-compra': acction === 0,  'forbidden-action': acction > 0}">
-            <p class="my-turn-text txt-compra">Fase de Compra</p>
+        <button class="btn-fases btn-itens btn-ativo-itens" (click)="onAcction(1)">
+            <p class="my-turn-text txt-itens">Você pode<br/>GIRAR OS DADOS!</p>
         </button>
-        <button class="btn-fases btn-itens" (click)="onAcction(1)" [ngClass]="{'btn-ativo-itens': acction === 1,  'forbidden-action': acction > 1}">
-            <p class="my-turn-text txt-itens">Use seus itens</p>
-        </button>
-        <button class="btn-fases btn-batalha" (click)="onAcction(2)" [ngClass]="{'btn-ativo-batalha': acction === 2,  'forbidden-action': acction > 2}">
-            <p class="my-turn-text txt-batalha">Vá para a Batalha</p>
+        <button class="btn-fases btn-batalha btn-ativo-batalha" (click)="onAcction(2)">
+            <p class="my-turn-text txt-batalha">Você pode <br/>BATALHAR!</p>
         </button>
         <button class="btn-fases btn-fim" (click)="onAcction(3)" [ngClass]="{'btn-ativo-fim': acction === 3}">
             <p class="my-turn-text txt-fim">Finalize sua jogada</p> 
@@ -68,103 +65,17 @@
             <p class="my-turn-text txt-batalha">Vez do Oponente</p>
         </button>
     </div>
-    <!-- Dado do Oponente-->
-    <div class="opponent-dice-area">
-        <div class="opponent-dice-text-area">
-            <p class="text">Oponente</p>
-        </div> 
-        <div class="scene">
-            <div class="cube" [ngStyle]="{'transform': 'rotateX(' + rotateX1 + 'deg) rotateY(' + rotateY1 + 'deg)'}">
-                <div class="cube-face cube-face-opponent front">
-                    <div class="dot dot0"></div>
-                </div>
-                <div class="cube-face cube-face-opponent back">
-                    <div class="dot dot1"></div>
-                    <div class="dot dot2"></div>
-                    <div class="dot dot3"></div>
-                    <div class="dot dot4"></div>
-                    <div class="dot dot5"></div>
-                    <div class="dot dot6"></div>
-                </div>
-                <div class="cube-face cube-face-opponent right">
-                    <div class="dot dot0"></div>
-                    <div class="dot dot1"></div>
-                    <div class="dot dot6"></div>
-                </div>
-                <div class="cube-face cube-face-opponent left">
-                    <div class="dot dot1"></div>
-                    <div class="dot dot2"></div>
-                    <div class="dot dot5"></div>
-                    <div class="dot dot6"></div>
-                </div>
-                <div class="cube-face cube-face-opponent top">
-                    <div class="dot dot1"></div>
-                    <div class="dot dot6"></div>
-                </div>
-                <div class="cube-face cube-face-opponent bottom">
-                    <div class="dot dot0"></div>
-                    <div class="dot dot1"></div>
-                    <div class="dot dot2"></div>
-                    <div class="dot dot5"></div>
-                    <div class="dot dot6"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Dado do Jogador -->
-    <div class="ally-dice-area">
-        <div class="ally-dice-text-area">
-            <p class="text">Seu dado</p>
-        </div> 
-        <div class="scene-ally">
-            <div class="cube" [ngStyle]="{'transform': 'rotateX(' + rotateX2 + 'deg) rotateY(' + rotateY2 + 'deg)'}">
-                <div class="cube-face cube-face-ally front">
-                    <div class="dot dot0"></div>
-                </div>
-                <div class="cube-face cube-face-ally back">
-                    <div class="dot dot1"></div>
-                    <div class="dot dot2"></div>
-                    <div class="dot dot3"></div>
-                    <div class="dot dot4"></div>
-                    <div class="dot dot5"></div>
-                    <div class="dot dot6"></div>
-                </div>
-                <div class="cube-face cube-face-ally right">
-                    <div class="dot dot0"></div>
-                    <div class="dot dot1"></div>
-                    <div class="dot dot6"></div>
-                </div>
-                <div class="cube-face cube-face-ally left">
-                    <div class="dot dot1"></div>
-                    <div class="dot dot2"></div>
-                    <div class="dot dot5"></div>
-                    <div class="dot dot6"></div>
-                </div>
-                <div class="cube-face cube-face-ally top">
-                    <div class="dot dot1"></div>
-                    <div class="dot dot6"></div>
-                </div>
-                <div class="cube-face cube-face-ally bottom">
-                    <div class="dot dot0"></div>
-                    <div class="dot dot1"></div>
-                    <div class="dot dot2"></div>
-                    <div class="dot dot5"></div>
-                    <div class="dot dot6"></div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <!-- Card detalhado -->
 <card-detail *ngIf="showCard" [character]="characterDetail" (closeDetails)="closeDetails()" [attackAnimation]="attackAnimation"></card-detail>
 
 <!-- Mensagens de batalha-->
-<messages-battle *ngIf="showMsg" [msg]="msg"></messages-battle>
+<messages-battle *ngIf="showMsg" [msg]="msg" (closeModal)="closeMsg()"></messages-battle>
 
 <!-- Som da batalha-->
- 
 <audio autoplay loop>
     <source src="assets/sounds/battle-song.mp3" type="audio/mp3">
 </audio>
+
+<dice *ngIf="showDice" (close)="closeDiceModal($event)"></dice>

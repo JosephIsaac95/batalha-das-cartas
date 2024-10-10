@@ -1,4 +1,5 @@
 import { Component, Input, Output, OnInit, EventEmitter, ElementRef, HostListener, OnChanges } from '@angular/core';
+import { Acctions } from 'src/app/interfaces/acctions';
 import { Character } from 'src/app/interfaces/character';
 
 @Component({
@@ -9,38 +10,39 @@ import { Character } from 'src/app/interfaces/character';
 export class MiniCardComponent implements OnInit, OnChanges {
 
   @Output() characterDetails = new EventEmitter<Character>();
-  @Output() rollDice = new EventEmitter<Character>()
-  @Output() attack = new EventEmitter<Character>()
-  @Output() foiAtacado = new EventEmitter<Character>()
-  @Input() character: Character;
+  @Output() rollDice = new EventEmitter<Acctions>()
+  @Output() attack = new EventEmitter<Acctions>()
+  @Output() foiAtacado = new EventEmitter<Acctions>()
+  @Input() character: Acctions;
   @Input() ally: boolean;
   @Input() battle: boolean;
   defending: boolean = false;
   selected: boolean = false;
 
   characterSelectAudio: HTMLAudioElement;
+  rollDiceAudio: HTMLAudioElement;
 
   constructor(private elementRef: ElementRef) { 
   }
 
   ngOnInit() {
-    console.log('ally', this.ally)
     if(this.ally)
       this.characterSelectAudio = new Audio('assets/sounds/menu-selection.mp3');
-    else
+    else if(!this.ally)
       this.characterSelectAudio = new Audio('assets/sounds/punch2.mp3');
+    this.rollDiceAudio = new Audio('assets/sounds/dice.mp3');
   }
   
   ngOnChanges(){
-    console.log(this.character.name, this.battle, !this.battle && !this.ally);
+    console.log(this.character.personagem.name, this.battle, !this.battle && !this.ally);
   }
 
   get gradient(): string {
-    return `linear-gradient(to bottom, ${this.character.backgroundTop}, ${this.character.backgroundBottom})`;
+    return `linear-gradient(to bottom, ${this.character.personagem.backgroundTop}, ${this.character.personagem.backgroundBottom})`;
   }
 
   click(){
-    this.characterSelectAudio.play();
+    this.characterSelectAudio.play();  
     if(this.ally)
       this.selected = true;
     else{
@@ -62,7 +64,7 @@ export class MiniCardComponent implements OnInit, OnChanges {
 
     switch(option){
       case 'atk':
-        this.attackEmit();
+        this.atacouEmit();
         break;
       case 'dice':
       this.rollDiceEmit();
@@ -74,14 +76,15 @@ export class MiniCardComponent implements OnInit, OnChanges {
   }
 
   showDetails(){
-    this.characterDetails.emit(this.character)
+    this.characterDetails.emit(this.character.personagem)
   }
 
   rollDiceEmit(){
     this.rollDice.emit(this.character);
+    this.rollDiceAudio.play();
   }
 
-  attackEmit(){
+  atacouEmit(){
     this.attack.emit(this.character);
   }
 

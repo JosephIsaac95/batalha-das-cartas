@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from '../../interfaces/character';
 import teamOne from '../../mock/team-one.json'
 import teamTwo from '../../mock/team-two.json'
+import { Battle } from 'src/app/interfaces/battle';
+import { Acctions } from 'src/app/interfaces/acctions';
 
 @Component({
   selector: 'app-battle',
@@ -11,18 +13,14 @@ import teamTwo from '../../mock/team-two.json'
 })
 export class BattleComponent implements OnInit {
 
+  showDice: boolean = false;
+
   team: number | null = null;
   battle: boolean = false;
   attackAnimation: boolean = false;
 
   acction: number = 0;
-
-  rotateX1: number = 0;
-  rotateY1: number = 0;
-  rotateX2: number = 0;
-  rotateY2: number = 0;
-  result1: number | null = null;
-  result2: number | null = null;
+  acctions!: Battle;
 
   allyCards!: Character[];
   opponentCards!: Character[];
@@ -34,20 +32,26 @@ export class BattleComponent implements OnInit {
 
   showMsg: boolean = false;
   msg: string = ''
+
+  cardQueAtacou: Acctions;
+  cardQueFoiAtacado: Acctions;
+  cardQueRolouODado: Acctions;
   
 
-  rollDice(dado: number): void {
-    const randomNumber = Math.floor(Math.random() * 6) + 1;
-    
-    if (dado === 1) {
-      this.result1 = randomNumber;
-      this.rotateX1 += 360*3 + Math.floor(Math.random() * 4) * 90;
-      this.rotateY1 += 360*3 + Math.floor(Math.random() * 4) * 90;
-    } else if (dado === 2) {
-      this.result2 = randomNumber;
-      this.rotateX2 += 360*3 + Math.floor(Math.random() * 4) * 90;
-      this.rotateY2 += 360*3 + Math.floor(Math.random() * 4) * 90;
-    }
+  rollDice(character: Acctions): void {
+    //this.animacaoGiroDado(dado);
+    this.showDice = true;
+
+    const ally = this.acctions.ally.find(ally => ally.personagem.url === character.personagem.url);
+    ally.jaRolouDado = true;
+    this.cardQueRolouODado = ally;
+  }
+
+  closeDiceModal(result: number){
+    this.showDice = false;
+    //Aqui só vou fazer a ideia de colocar os dados, mas é preciso olhar regra a regra pra ver o que acontece
+    //P. ex.: Uma habilidade pode negar outra, fora as habilidades que acabam em determinado turno.
+    this.cardQueRolouODado.habAtiva.push(result);
   }
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
@@ -63,7 +67,38 @@ export class BattleComponent implements OnInit {
         this.allyCards = teamTwo
         this.opponentCards = teamOne
       }
-    })
+    });
+
+    this.acctionsInitial();
+  }
+
+  acctionsInitial(){
+
+    this.acctions = {
+      ally: [],
+      opponent: [],
+      turn: 0
+    };
+
+    for(let i = 0; i < this.allyCards.length; i++) {
+      this.acctions.ally[i] = {
+        atk: this.allyCards[i].atk,
+        health: this.allyCards[i].health,
+        habAtiva: [],
+        jaAtacou: false,
+        jaRolouDado: false,
+        personagem: this.allyCards[i]
+      };
+  
+      this.acctions.opponent[i] = {
+        atk: this.opponentCards[i].atk,
+        health: this.opponentCards[i].health,
+        habAtiva: [],
+        jaAtacou: false,
+        jaRolouDado: false,
+        personagem: this.opponentCards[i]
+      };
+    }
   }
 
   goToHome() {
@@ -80,20 +115,37 @@ export class BattleComponent implements OnInit {
     this.showCard = false;
   }
 
-  attackAction(event: Character){
+  quemAtacou(character: Acctions){
     this.battle = true;
     this.msg = "Escolha o Oponente!";
     this.showMsg = true;
 
-    setTimeout(()=>{
-      this.showMsg = false
-    }, 2000)
+    this.cardQueAtacou = character;
+    const ally = this.acctions.ally.find(ally => ally.personagem.url === character.personagem.url);
+
+    if(ally){
+      
+    }
   }
 
-  foiAtacado(character: Character){
+  foiAtacado(character: Acctions){
     this.showCard = true;
-    this.characterDetail = character;
+    this.characterDetail = character.personagem;
     this.attackAnimation = true;
+
+    //O oponente atacado deve perder vida
+    const opponent = this.acctions.opponent.find(opp => opp.personagem.url === character.personagem.url);
+    const ally = this.acctions.ally.find(ally => ally.personagem.url === this.cardQueAtacou.personagem.url)
+
+    //O oponente perde a vida, o card que atacou não pode mais atacar
+    opponent.health -= this.cardQueAtacou.atk;
+    ally.jaAtacou = true;
+    ally.jaRolouDado = true;
+    this.battle = false;
+    
+    if (opponent.health <= 0) {
+      opponent.health = 0;
+    }
   }
 
   onAcction(event){
@@ -113,9 +165,14 @@ export class BattleComponent implements OnInit {
       case 3:
         if(this.acction<=event)
           this.acction = 3;
-        //setTimeout(()=>{this.turnoOponente = true;}, 1000);
-        
+        this.msg="Vez do Oponente!";
+        this.showMsg=true;
+        setTimeout(()=>{this.turnoOponente = true;}, 1000);
         break;
     }
+  }
+
+  closeMsg(){
+      this.showMsg = false
   }
 }

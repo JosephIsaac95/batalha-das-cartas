@@ -19,7 +19,7 @@
     pointer-events: none;
 }
 
-.rotating-border::before {
+.inimigo-selecionavel::before {
     content: "";
     position: absolute;
     top: 0;
@@ -30,7 +30,7 @@
     transition: all 2s;
 }
 
-.rotating-border:hover {
+.inimigo-selecionavel:hover {
     outline: 5px solid red;
 }
 
@@ -128,8 +128,46 @@
     background: linear-gradient(to left, #515460, #1D3FC7);
 }
 
+.no-action {
+    cursor: not-allowed;
+    background-color: #CCCCCC;
+    color: white;
+    pointer-events: none;
+}
+
 .text-btn {
     font-size: 12px;
     font-weight: bold;
     color: white;
+}
+
+
+/* CSS DO DADO */
+
+.dice-container {
+    position: absolute;
+    top: 0;
+    display: flex;
+    width: 100%;
+}
+
+.dice {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 2px;
+    margin-left: 5px;
+    color: white;
+}
+
+.dice-green {
+    background-color: green;
+}
+
+.dice-red {
+    background-color: #EE0000;
 }

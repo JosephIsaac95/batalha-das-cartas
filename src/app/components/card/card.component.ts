@@ -18,8 +18,6 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('character Details', this.character)
-
     setTimeout(()=>{this.attackAnimation = false;},1000);
     setTimeout(()=>{this.closeDetails.emit();},2000)
   }
@@ -31,8 +29,6 @@ export class CardComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   onClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;
-    
-    console.log('cliquei', this.click)
 
     if(this.click != 0)
       this.closeDetails.emit();

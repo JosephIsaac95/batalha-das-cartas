@@ -1,16 +1,12 @@
+import { Acctions } from "./acctions";
 
 
 export interface Battle {
-    ally: Actions[];
-    opponent: Actions[];
+    ally: Acctions[];
+    opponent: Acctions[];
     turn: number;
 }
 
-interface Actions {
-    id: string; //url
-    cardAtivado: boolean;
-    cardDesativado: boolean;
-}
 
 //explicação
 /**

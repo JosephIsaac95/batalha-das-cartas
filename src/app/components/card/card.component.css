@@ -24,7 +24,7 @@
 }
 
 .attacked {
-    animation: shake 0.5s infinite; /* Chacoalhar a carta durante o ataque */
+    animation: shake 0.5s infinite, blinkRed 1s infinite;; /* Chacoalhar a carta durante o ataque */
 }
 
 @keyframes shake {
@@ -33,6 +33,12 @@
     50% { transform: translate(5px, -5px); }
     75% { transform: translate(-5px, -5px); }
     100% { transform: translate(0); }
+}
+
+@keyframes blinkRed {
+    0% { background-color: transparent; }
+    50% { background-color: red; }
+    100% { background-color: transparent; }
 }
 
 .card-img {

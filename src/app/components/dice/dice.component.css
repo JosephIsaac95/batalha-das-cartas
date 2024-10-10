@@ -1,0 +1,80 @@
+
+/*Dado criado pelo GPT*/
+
+
+.dice-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
+    z-index: 1000; /* Certifique-se de que o loader apareça acima de outros elementos */
+}
+
+
+.scene {
+    width: 150px;
+    height: 150px;
+    perspective: 800px;
+    margin-top: 40px;
+}
+
+.scene-ally {
+    width: 100px;
+    height: 100px;
+    perspective: 800px;
+}
+
+.cube {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin: center;
+    transition: transform 2s ease;
+}
+  
+.cube-face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #f00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 2px;
+}
+
+.cube-face-ally {
+    background: #f00;
+}
+
+.cube-face-opponent {
+    background: #ff0;
+}
+  
+.dot {
+    position: absolute;
+    background: black;
+    border-radius: 50%;
+}
+  
+.dot0 { width: 15px; height: 15px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.dot1 { width: 15px; height: 15px; top: 10px; left: 10px; }
+.dot2 { width: 15px; height: 15px; top: 10px; right: 10px; }
+.dot3 { width: 15px; height: 15px; top: 50%; left: 10px; transform: translate(0, -50%); }
+.dot4 { width: 15px; height: 15px; top: 50%; right: 10px; transform: translate(0, -50%); }
+.dot5 { width: 15px; height: 15px; bottom: 10px; left: 10px; }
+.dot6 { width: 15px; height: 15px; bottom: 10px; right: 10px; }
+
+
+.cube-face.front  { transform: translateZ(50px); }
+.cube-face.back   { transform: rotateY(180deg) translateZ(50px); }
+.cube-face.right  { transform: rotateY(90deg) translateZ(50px); }
+.cube-face.left   { transform: rotateY(-90deg) translateZ(50px); }
+.cube-face.top    { transform: rotateX(90deg) translateZ(50px); }
+.cube-face.bottom { transform: rotateX(-90deg) translateZ(50px); }

@@ -5,23 +5,28 @@
     [ngClass]="{
         'card-selected': selected && ally,
         'no-hover': !battle && !ally,
-        'rotating-border': !ally && battle
+        'inimigo-selecionavel': !ally && battle
     }"
 >
     <div class="container-select-options" *ngIf="selected">
-        <button class="btn btn-atk" (click)="optionSelected('atk')">
+        <button class="btn" (click)="optionSelected('atk')" [ngClass]="{'no-action': character.jaAtacou, 'btn-atk': !character.jaAtacou}">
             <p class="text-btn">Atacar!</p>
         </button>
-        <button class="btn btn-dice" (click)="optionSelected('dice')">
+        <button class="btn" (click)="optionSelected('dice')" [ngClass]="{'no-action': character.jaRolouDado, 'btn-dice': !character.jaRolouDado}">
             <p class="text-btn">Girar Dado</p>
         </button>
         <button class="btn btn-details" (click)="optionSelected('details')">
             <p class="text-btn">Detalhes</p>
         </button>
     </div>
+    <div class="dice-container"  *ngFor="let habAtiva of character.habAtiva">
+        <div class="dice" [ngClass]="{'dice-green': habAtiva > 2, 'dice-red': habAtiva < 3}">
+            <p>{{habAtiva}}</p>
+        </div>
+    </div>
     <div>
-        <img  class="card-img" [src]="character.url" alt="Ninja Azul">
-        <p class="title">{{character.name}}</p>
+        <img  class="card-img" [src]="character.personagem.url" alt="Ninja Azul">
+        <p class="title">{{character.personagem.name}}</p>
     </div>
     <div>
         <div class="atk">
