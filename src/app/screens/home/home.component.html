@@ -49,3 +49,12 @@
     </button>
   </div>
   </div>
+
+  <audio autoplay loop>
+    <source src="assets/sounds/harpa-home.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  
+  <div class="loader-container" *ngIf="load">
+    <div class="loader"></div>
+  </div>

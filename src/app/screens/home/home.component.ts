@@ -9,18 +9,31 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   selectedButtonIndex: number = -1;
+  load: boolean = false;
+  btnSelectTeamAudio: HTMLAudioElement;
+  btnPlayAudio: HTMLAudioElement;
 
-  selectButton(index: number) {
-    console.log('selectButton', index)
-    this.selectedButtonIndex = index;
+  constructor(private router: Router) { 
+    this.btnSelectTeamAudio = new Audio('assets/sounds/menu-selection.mp3');
+    this.btnPlayAudio = new Audio('assets/sounds/transition.mp3');
   }
-
-  constructor(private router: Router) { }
 
   ngOnInit() {
   }
+  
+  selectButton(index: number) {
+    console.log('selectButton', index)
+    this.selectedButtonIndex = index;
+    this.btnSelectTeamAudio.play();
+  }
 
   goToBattle(){
-    this.router.navigate(['/battle', this.selectedButtonIndex]);
+    
+    this.load = true;
+    this.btnPlayAudio.play();
+    setTimeout(()=>{
+      this.load = false;
+      this.router.navigate(['/battle', this.selectedButtonIndex]);
+    }, 500)
   }
 }
