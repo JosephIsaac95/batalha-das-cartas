@@ -24,7 +24,7 @@
 }
 
 .attacked {
-    animation: shake 0.5s infinite, blinkRed 1s infinite;; /* Chacoalhar a carta durante o ataque */
+    animation: shake 0.5s infinite, blinkRed 1s infinite;
 }
 
 @keyframes shake {

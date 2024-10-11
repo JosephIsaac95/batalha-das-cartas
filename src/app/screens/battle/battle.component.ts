@@ -168,6 +168,7 @@ export class BattleComponent implements OnInit {
         this.msg="Vez do Oponente!";
         this.showMsg=true;
         setTimeout(()=>{this.turnoOponente = true;}, 1000);
+        this.acctions.turn += 1;
         break;
     }
   }

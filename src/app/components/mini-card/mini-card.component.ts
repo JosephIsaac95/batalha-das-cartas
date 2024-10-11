@@ -16,6 +16,7 @@ export class MiniCardComponent implements OnInit, OnChanges {
   @Input() character: Acctions;
   @Input() ally: boolean;
   @Input() battle: boolean;
+  @Input() opponentTurn: boolean;
   defending: boolean = false;
   selected: boolean = false;
 

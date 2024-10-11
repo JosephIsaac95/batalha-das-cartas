@@ -18,8 +18,14 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    setTimeout(()=>{this.attackAnimation = false;},1000);
-    setTimeout(()=>{this.closeDetails.emit();},2000)
+    this.receivedAttack();
+  }
+
+  receivedAttack(){
+    if(this.attackAnimation){
+      setTimeout(()=>{this.attackAnimation = false;},1000);
+      setTimeout(()=>{this.closeDetails.emit();},2000);
+    }
   }
 
   get gradient(): string {

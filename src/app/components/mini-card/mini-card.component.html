@@ -1,10 +1,12 @@
+<div *ngIf="character.health === 0" class="dead"></div>
 <button 
+    *ngIf="character.health !== 0"
     (click)="click()" 
-    [ngStyle]="{'background': gradient}" 
+    [ngStyle]="character.health !== 0 ? {'background': gradient} : {}" 
     class="card" 
     [ngClass]="{
         'card-selected': selected && ally,
-        'no-hover': !battle && !ally,
+        'no-hover': (!battle && !ally) || opponentTurn,
         'inimigo-selecionavel': !ally && battle
     }"
 >

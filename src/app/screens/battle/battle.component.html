@@ -2,7 +2,7 @@
     <!-- Mensagens em cima na esquerda -->
     <div class="container-info">
         <div class="info">
-            <p>Turno 1</p>
+            <p>Turno {{acctions.turn}}</p>
         </div>
     </div>
     <!-- Campo de Batalha -->
@@ -45,6 +45,7 @@
                 [ally]="true"
                 (attack)="quemAtacou($event)"
                 [battle]="battle"
+                [opponentTurn]="turnoOponente"
             ></mini-card>
         </div>
     </div>
