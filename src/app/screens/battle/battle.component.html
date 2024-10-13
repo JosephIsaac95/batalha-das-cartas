@@ -80,3 +80,7 @@
 </audio>
 
 <dice *ngIf="showDice" (close)="closeDiceModal($event)"></dice>
+
+<game-over *ngIf="showGameOverModal" [resultMessage]="finalResult"  (close)="closeGameOver()"></game-over>
+
+<!--battle-animation *ngIf="showBattleField" [attacker]="cardQueAtacou" [defenser]="cardQueFoiAtacado"></battle-animation-->

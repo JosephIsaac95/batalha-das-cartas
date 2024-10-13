@@ -1,0 +1,22 @@
+<!-- game-over-modal.component.html -->
+<div class="modal-overlay">
+    <div class="modal-content">
+      <h2 [ngClass]="{'title-victory': resultMessage.toLowerCase().includes('vit'), 'title-lose': resultMessage.toLowerCase().includes('der')}">{{ resultMessage }}</h2>
+      <p>Noso jogo está em desenvolvimento. Acompanhe nossas redes sociais para saber mais:</p>
+      
+      <div class="social-buttons">
+        <a href="https://www.tiktok.com" target="_blank" class="social-button">
+          <img src="assets/logos/tiktok-logo.png" alt="TikTok">
+        </a>
+        <a href="https://www.youtube.com" target="_blank" class="social-button">
+          <img src="assets/logos/youtube-logo.png" alt="YouTube">
+        </a>
+        <a href="https://www.instagram.com" target="_blank" class="social-button">
+          <img src="assets/logos/instagram-logo.png" alt="Instagram">
+        </a>
+      </div>
+  
+      <button (click)="closeModal()">Fechar</button>
+    </div>
+  </div>
+  

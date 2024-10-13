@@ -1,0 +1,39 @@
+<div class="battle-field">
+    <div class="field-left">
+        <div class="card" [ngStyle]="{'background': gradientAttacker}">
+            <div>
+                <img  class="card-img" [src]="attacker.personagem.url" alt="Ninja Azul">
+                <p class="title">{{attacker.personagem.name}}</p>
+            </div>
+            <div>
+                <div class="atk">
+                    <img class="icon" src="assets/icons/sword.png">
+                    <p class="text">{{attacker.atk}}</p>
+                </div>
+                <div class="hearth">
+                    <img class="icon" src="assets/icons/hearth.png">
+                    <p class="text">{{attacker.health}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="field-right">
+        <div class="card" [ngStyle]="{'background': gradientDefenser}">
+            <div>
+                <img  class="card-img" [src]="defenser.personagem.url" alt="Ninja Azul">
+                <p class="title">{{defenser.personagem.name}}</p>
+            </div>
+            <div>
+                <div class="atk">
+                    <img class="icon" src="assets/icons/sword.png">
+                    <p class="text">{{defenser.atk}}</p>
+                </div>
+                <div class="hearth">
+                    <img class="icon" src="assets/icons/hearth.png">
+                    <p class="text">{{defenser.health}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

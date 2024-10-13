@@ -4,7 +4,7 @@ export interface Acctions {
     personagem: Character;
     jaRolouDado: boolean;
     jaAtacou: boolean;
-    habAtiva: number[];
+    habAtiva: number;
     atk: number;
     health: number;
 }

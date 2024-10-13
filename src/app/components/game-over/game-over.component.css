@@ -1,0 +1,49 @@
+/* game-over-modal.component.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 300px;
+}
+  
+.social-buttons {
+  margin: 20px 0;
+}
+  
+.social-button {
+  display: inline-block;
+  margin: 0 10px;
+}
+  
+.social-button img {
+  width: 40px; /* Tamanho dos ícones */
+  height: auto;
+}
+
+.title-victory {
+  font-size: 26px;
+  color: green;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.title-lose {
+  font-size: 26px;
+  color: red;
+  margin-bottom: 10px;
+  font-weight: bold;
+}

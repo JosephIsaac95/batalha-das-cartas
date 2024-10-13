@@ -1,4 +1,5 @@
 import { Component, HostListener, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Acctions } from 'src/app/interfaces/acctions';
 import { Character } from 'src/app/interfaces/character';
 
 @Component({
@@ -8,9 +9,12 @@ import { Character } from 'src/app/interfaces/character';
 })
 export class CardComponent implements OnInit {
 
-  @Input() character: Character;
+  @Input() character: Acctions;
   @Input() attackAnimation: boolean;
   @Output() closeDetails = new EventEmitter();
+
+  punchAudio: HTMLAudioElement;
+  
   defending: boolean = false;
   cardUrl!: string;
   click = 0;
@@ -18,6 +22,7 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.punchAudio = new Audio('assets/sounds/punch2.mp3')
     this.receivedAttack();
   }
 
@@ -25,11 +30,12 @@ export class CardComponent implements OnInit {
     if(this.attackAnimation){
       setTimeout(()=>{this.attackAnimation = false;},1000);
       setTimeout(()=>{this.closeDetails.emit();},2000);
+      this.punchAudio.play();
     }
   }
 
   get gradient(): string {
-    return `linear-gradient(to bottom, ${this.character.backgroundTop}, ${this.character.backgroundBottom})`;
+    return `linear-gradient(to bottom, ${this.character.personagem.backgroundTop}, ${this.character.personagem.backgroundBottom})`;
   }
 
   @HostListener('document:click', ['$event'])

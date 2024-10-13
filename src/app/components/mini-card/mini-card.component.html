@@ -7,7 +7,8 @@
     [ngClass]="{
         'card-selected': selected && ally,
         'no-hover': (!battle && !ally) || opponentTurn,
-        'inimigo-selecionavel': !ally && battle
+        'inimigo-selecionavel': !ally && battle,
+        'card-fire': character.habAtiva === 6
     }"
 >
     <div class="container-select-options" *ngIf="selected">
@@ -21,9 +22,9 @@
             <p class="text-btn">Detalhes</p>
         </button>
     </div>
-    <div class="dice-container"  *ngFor="let habAtiva of character.habAtiva">
-        <div class="dice" [ngClass]="{'dice-green': habAtiva > 2, 'dice-red': habAtiva < 3}">
-            <p>{{habAtiva}}</p>
+    <div class="dice-container" *ngIf=" character.habAtiva !== 0">
+        <div class="dice" [ngClass]="{'dice-green': character.habAtiva > 2, 'dice-red': character.habAtiva < 3}">
+            <p>{{character.habAtiva}}</p>
         </div>
     </div>
     <div>

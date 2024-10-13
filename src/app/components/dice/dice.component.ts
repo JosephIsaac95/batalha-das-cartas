@@ -9,6 +9,8 @@ export class DiceComponent implements OnInit {
 
   @Output() close = new EventEmitter<number>();
   
+  rollDiceAudio: HTMLAudioElement;
+
   rotateX: number = 0;
   rotateY: number = 0;
   result: number | null = null;
@@ -16,10 +18,15 @@ export class DiceComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('entrou no componente dado');
+    this.rollDiceAudio = new Audio('assets/sounds/dice.mp3');
     this.animacaoGiroDado();
+    
   }
 
   animacaoGiroDado(){
+    console.log('entrou na animação do dado');
+    this.rollDiceAudio.play();
     const randomNumber = Math.floor(Math.random() * 6) + 1;
   
     this.result = randomNumber;
@@ -28,7 +35,7 @@ export class DiceComponent implements OnInit {
 
     setTimeout(()=>{
       this.close.emit(this.result);
-    },3000)
+    }, 3000)
   }
 
   // Define a rotação de X para cada número do dado

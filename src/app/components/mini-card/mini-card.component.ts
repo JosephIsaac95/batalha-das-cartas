@@ -9,7 +9,7 @@ import { Character } from 'src/app/interfaces/character';
 })
 export class MiniCardComponent implements OnInit, OnChanges {
 
-  @Output() characterDetails = new EventEmitter<Character>();
+  @Output() characterDetails = new EventEmitter<Acctions>();
   @Output() rollDice = new EventEmitter<Acctions>()
   @Output() attack = new EventEmitter<Acctions>()
   @Output() foiAtacado = new EventEmitter<Acctions>()
@@ -21,21 +21,15 @@ export class MiniCardComponent implements OnInit, OnChanges {
   selected: boolean = false;
 
   characterSelectAudio: HTMLAudioElement;
-  rollDiceAudio: HTMLAudioElement;
 
   constructor(private elementRef: ElementRef) { 
   }
 
   ngOnInit() {
-    if(this.ally)
-      this.characterSelectAudio = new Audio('assets/sounds/menu-selection.mp3');
-    else if(!this.ally)
-      this.characterSelectAudio = new Audio('assets/sounds/punch2.mp3');
-    this.rollDiceAudio = new Audio('assets/sounds/dice.mp3');
+    this.characterSelectAudio = new Audio('assets/sounds/menu-selection.mp3');
   }
   
   ngOnChanges(){
-    console.log(this.character.personagem.name, this.battle, !this.battle && !this.ally);
   }
 
   get gradient(): string {
@@ -43,7 +37,7 @@ export class MiniCardComponent implements OnInit, OnChanges {
   }
 
   click(){
-    this.characterSelectAudio.play();  
+    this.characterSelectAudio.play();
     if(this.ally)
       this.selected = true;
     else{
@@ -77,12 +71,11 @@ export class MiniCardComponent implements OnInit, OnChanges {
   }
 
   showDetails(){
-    this.characterDetails.emit(this.character.personagem)
+    this.characterDetails.emit(this.character)
   }
 
   rollDiceEmit(){
     this.rollDice.emit(this.character);
-    this.rollDiceAudio.play();
   }
 
   atacouEmit(){

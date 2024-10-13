@@ -9,6 +9,8 @@ import { CardComponent } from './components/card/card.component';
 import { MiniCardComponent } from './components/mini-card/mini-card.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { DiceComponent } from './components/dice/dice.component';
+import { GameOverComponent } from './components/game-over/game-over.component';
+import { BattleAnimationComponent } from './components/battle-animation/battle-animation.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DiceComponent } from './components/dice/dice.component';
     CardComponent,
     MiniCardComponent,
     MessagesComponent,
-    DiceComponent
+    DiceComponent,
+    GameOverComponent,
+    BattleAnimationComponent
   ],
   imports: [
     BrowserModule,

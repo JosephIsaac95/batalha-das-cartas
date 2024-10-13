@@ -1,11 +1,11 @@
 <div class="modal"  [ngClass]="{'attacked': attackAnimation}">
     <div class="card" [ngStyle]="{'background': gradient}" class="card" [ngClass]="{'card-selected':selected}">
         <div>
-            <img  class="card-img" [src]="character.url" alt="Ninja Azul">
-            <p class="title">{{character.name}}</p>
+            <img  class="card-img" [src]="character.personagem.url" alt="Ninja Azul">
+            <p class="title">{{character.personagem.name}}</p>
         </div>
         <div *ngIf="!defending" class="skills">
-            <div *ngFor="let skill of character.skillsAtk">
+            <div *ngFor="let skill of character.personagem.skillsAtk">
                 <span class="skill-text-container">
                     <b class="skill-number">{{skill.title}}</b>
                     <p class="skill-text">{{skill.text}}</p>
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div *ngIf="defending" class="skills">        
-            <div  *ngFor="let skill of character.skillsDefense">
+            <div  *ngFor="let skill of character.personagem.skillsDefense">
                 <span class="skill-text-container">
                     <b class="skill-number">{{skill.title}}</b>
                     <p class="skill-text">{{skill.text}}</p>
