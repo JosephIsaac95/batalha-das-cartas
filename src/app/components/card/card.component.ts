@@ -22,7 +22,7 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.punchAudio = new Audio('assets/sounds/punch2.mp3')
+    this.punchAudio = new Audio('assets/sounds/punch.mp3')
     this.receivedAttack();
   }
 
