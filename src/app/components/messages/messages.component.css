@@ -20,6 +20,23 @@
     animation: spin 1s linear infinite; /* Animação de rotação */
 }
 
+@media (min-width: 768px){
+  .message-container {
+    position: fixed; /* Fixa a mensagem na tela */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Para ficar na frente de outros elementos */
+    opacity: 1; /* Para garantir que o container esteja visível inicialmente */
+    animation: slide-in 1s forwards; /* Aplica a animação ao container */
+    width: 50vw;
+  }
+}
+@media (max-width: 768px){
   .message-container {
     position: fixed; /* Fixa a mensagem na tela */
     top: 50%;
@@ -33,9 +50,12 @@
     opacity: 1; /* Para garantir que o container esteja visível inicialmente */
     animation: slide-in 1s forwards; /* Aplica a animação ao container */
     width: 90vw;
-  }
+}
+}
+
+
   
-  .message {
+.message {
     font-size: 32px; /* Tamanho da fonte grande */
     color: white; /* Cor do texto */
     opacity: 0; /* O texto começa invisível */

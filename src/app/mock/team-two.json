@@ -5,7 +5,7 @@
         "backgroundTop": "#2D3539",
         "backgroundBottom": "#E5D0B1",
         "atk": 12,
-        "health": 100,
+        "health": 60,
         "skillsAtk":[],
         "skillsDefense":[]
     },
@@ -15,7 +15,7 @@
         "backgroundTop": "#2D3539",
         "backgroundBottom": "#E5D0B1",
         "atk": 8,
-        "health": 100,
+        "health": 60,
         "skillsAtk":[],
         "skillsDefense":[]
     },
@@ -25,7 +25,7 @@
         "backgroundTop": "#202D80",
         "backgroundBottom": "#F7B5E1",
         "atk": 8,
-        "health": 100,
+        "health": 60,
         "skillsAtk":[],
         "skillsDefense":[]
     }

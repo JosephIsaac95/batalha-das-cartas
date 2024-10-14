@@ -4,7 +4,7 @@
         height: 100vh;
         width: 100vw;
         background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.75)), /* Camada de transparência */
-                    url('/assets/screens/background-versus.png'); /* URL da imagem */
+                    url('/assets/screens/background.png'); /* URL da imagem */
         background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
         background-position: center; /* Centraliza a imagem */
         display: flex;
@@ -262,7 +262,7 @@
         height: 100vh;
         overflow: auto;
         gap: 10px;
-        background-image: url('/assets/screens/background-versus.png');
+        background-image: url('/assets/screens/background.png');
         background-size: auto; /* Ajusta a imagem para cobrir toda a tela */
         background-position: center; /* Centraliza a imagem */
         background-attachment: fixed;

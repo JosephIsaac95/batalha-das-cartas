@@ -2,7 +2,7 @@
   .background-image-div {
     height: 100vh;
     width: 100vw;
-    background-image: url('/assets/screens/background-versus.png');
+    background-image: url('/assets/screens/background.png');
     background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
     background-position: center; /* Centraliza a imagem */
     display: flex;
@@ -185,7 +185,7 @@
     width: 100vw;
     height: 100vh;
     overflow-y: auto;
-    background-image: url('/assets/screens/background-versus.png');
+    background-image: url('/assets/screens/background.png');
     background-size: auto; /* Ajusta a imagem para cobrir toda a tela */
     background-position: center; /* Centraliza a imagem */
     background-attachment: fixed;
