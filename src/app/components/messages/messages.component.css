@@ -32,13 +32,15 @@
     z-index: 1000; /* Para ficar na frente de outros elementos */
     opacity: 1; /* Para garantir que o container esteja visível inicialmente */
     animation: slide-in 1s forwards; /* Aplica a animação ao container */
+    width: 90vw;
   }
   
   .message {
-    font-size: 48px; /* Tamanho da fonte grande */
+    font-size: 32px; /* Tamanho da fonte grande */
     color: white; /* Cor do texto */
     opacity: 0; /* O texto começa invisível */
     animation: fade-in 1s forwards 0.5s; /* Animação para o texto com um atraso */
+    text-align: center;
   }
   
   /* Animações */

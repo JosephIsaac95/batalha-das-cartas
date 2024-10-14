@@ -1,181 +1,347 @@
-.background-image-div {
-  height: 100vh;
-  width: 100vw;
-  background-image: url('/assets/screens/background-versus.png'); /* URL da imagem */
-  background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
-  background-position: center; /* Centraliza a imagem */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+@media (min-width: 768px){
+  .background-image-div {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('/assets/screens/background-versus.png');
+    background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
+    background-position: center; /* Centraliza a imagem */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .select-team {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+  }
+    
+  .team {
+    width: 420px;
+    height: 210px;
+    border: none;
+    
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+  }
+
+  .team-left {
+    background: linear-gradient(to right, #ff69b4, #1e90ff, #ffa500);
+  }
+
+  .team-right {
+    background: linear-gradient(to right, #5E8463, #B6B6B6, #31316E);
+  }
+
+  .selected {
+    outline: 1rem solid yellow; /* Usando outline em vez de border */
+    transition: outline-color 1s;
+  }
+
+  .container-rosa{
+    height: 200px;
+    overflow: hidden;
+    margin-left: -30px;
+    width: 250px;
+  }
+
+  .ninja-rosa {
+    height: 211px;
+  }
+
+  .container-azul{
+    height: 270px;
+    overflow: hidden;
+    position: absolute;
+  }
+
+  .ninja-azul {
+    height: 443px;
+  }
+
+  .container-laranja{
+    height: 225px;
+    overflow: hidden;
+    margin-left: 30px;
+  }
+
+  .ninja-laranja {
+    height: 300px;
+  }
+
+  .container-verde{
+    height: 185px;
+    overflow: hidden;
+    margin-left: -30px;
+    width: 390px;
+  }
+
+  .ninja-verde {
+    height: 251px;
+  }
+
+  .container-branco{
+    position: absolute;
+    margin-bottom: -3px;
+    margin-left: 80px;
+    overflow: hidden;
+  }
+
+  .ninja-branco {
+    height: 251px;
+  }
+
+  .container-roxa{
+    margin-left: 60px;
+    margin-right: -10px;
+    margin-bottom: -3px;
+  }
+
+  .ninja-roxa {
+    height: 185px;
+  }
+
+  .button {
+    background-color: #5F5E84;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 400px;
+    height: 90px;
+  }
+
+  .button p {
+    font-size: 56px;
+  }
+
+  .button:hover {
+    background-color: #8c8abe;
+    transition: 0.5s;
+  }
+
+  .button-disable {
+    background-color: #CCC;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  .title {
+    color: black;
+    font-weight: bold;
+    font-size: 56px;
+    text-align: center;
+  }
+
+  .team-text {
+    margin-top: 20px;
+    color: black;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
+    z-index: 1000; /* Certifique-se de que o loader apareça acima de outros elementos */
+  }
+
+  .loader {
+    border: 6px solid #f3f3f3; /* Cor de fundo do círculo */
+    border-top: 6px solid #3498db; /* Cor da borda superior (efeito de giro) */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite; /* Animação de rotação */
+  }
+
+  /* Animação de rotação */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 }
 
-.select-team {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100vw;
-}
-  
-.team {
-  width: 420px;
-  height: 210px;
-  border: none;
-  
-  display: flex;
-  align-items: flex-end;
-  cursor: pointer;
-  position: relative;
-  padding: 0;
-}
+@media (max-width: 768px) {
+  .background-image-div {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    background-image: url('/assets/screens/background-versus.png');
+    background-size: auto; /* Ajusta a imagem para cobrir toda a tela */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    
+  }
 
-.team-left {
-  background: linear-gradient(to right, #ff69b4, #1e90ff, #ffa500);
-}
+  .select-team {
+    display: flex;
+    flex-direction: column; /* Alinhar as equipes verticalmente */
+    margin-top: 20px;
+    gap: 20px;
 
-.team-right {
-  background: linear-gradient(to right, #5E8463, #B6B6B6, #31316E);
-}
+  }
 
-.selected {
-  outline: 1rem solid yellow; /* Usando outline em vez de border */
-  transition: outline-color 1s;
-}
+  .team {
+    width: 90vw; /* Equipe ocupa a largura total */
+    height: 210px; /* Ajusta a altura automaticamente */
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+    border: none;
+  }
 
+  .team-left {
+    background: linear-gradient(to right, #ff69b4, #1e90ff, #ffa500);
+    display: flex;
+    justify-content: space-between;
+  }
 
-.container-rosa{
-  height: 200px;
-  overflow: hidden;
-  margin-left: -30px;
-  width: 250px;
-}
+  .team-right {
+    background: linear-gradient(to right, #5E8463, #B6B6B6, #31316E);
+    display: flex;
+    justify-content: space-between;
+  }
 
-.ninja-rosa {
-  height: 211px;
-}
+  .selected {
+    outline: 1rem solid yellow; /* Usando outline em vez de border */
+    transition: outline-color 1s;
+  }
 
-.container-azul{
-  height: 270px;
-  overflow: hidden;
-  position: absolute;
-}
+  .container-rosa{
+    height: 200px;
+    overflow: hidden;
+    margin-left: -40px;
+    width: 250px;
+  }
 
-.ninja-azul {
-  height: 443px;
-}
+  .ninja-rosa {
+    height: 211px;
+  }
 
-.container-laranja{
-  height: 225px;
-  overflow: hidden;
-  margin-left: 30px;
-}
+  .container-azul{
+    height: 250px;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
 
-.ninja-laranja {
-  height: 300px;
-}
+  .ninja-azul {
+    height: 345px;
+  }
 
-.container-verde{
-  height: 185px;
-  overflow: hidden;
-  margin-left: -30px;
-  width: 390px;
-}
+  .container-laranja{
+    height: 225px;
+    overflow: hidden;
+  }
 
-.ninja-verde {
-  height: 251px;
-}
+  .ninja-laranja {
+    height: 300px;
+  }
 
-.container-branco{
-  position: absolute;
-  margin-bottom: -3px;
-  margin-left: 80px;
-  overflow: hidden;
-}
+  .container-verde{
+    height: 185px;
+    overflow: hidden;
+    margin-left: -90px;
+    width: 390px;
+  }
 
-.ninja-branco {
-  height: 251px;
-}
+  .ninja-verde {
+    height: 251px;
+  }
 
-.container-roxa{
-  margin-left: 60px;
-  margin-right: -10px;
-  margin-bottom: -3px;
-}
+  .container-branco{
+    position: absolute;
+    margin-bottom: -3px;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+  }
 
-.ninja-roxa {
-  height: 185px;
-}
+  .ninja-branco {
+    height: 251px;
+  }
 
-.button {
-  background-color: #5F5E84;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  width: 400px;
-  height: 90px;
+  .container-roxa{
+    margin-left: -50px;
+    margin-bottom: -3px;
+    overflow: hidden;
+  }
 
-}
+  .ninja-roxa {
+    height: 185px;
+  }
 
-.button p {
-  font-size: 56px;
-}
+  .button {
+    background-color: #5F5E84;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 90vw;
+    height: 60px;
+    margin-bottom: 10px;
+  }
 
-.button:hover {
-  background-color: #8c8abe;
-  transition: 0.5s;
-}
+  .button-disable {
+    background-color: #CCC;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
 
-.button-disable {
-  background-color: #CCC;
-  pointer-events: none;
-  cursor: not-allowed;
-}
+  .button p {
+    font-size: 32px; /* Texto do botão menor para mobile */
+  }
 
-.title {
-  color: black;
-  font-weight: bold;
-  font-size: 56px;
-  text-align: center;
-}
+  .title {
+    color: black;
+    font-weight: bold;
+    font-size: 32px;
+    text-align: center;
+    margin-top: 10px;
+    width: 90vw;
+  }
 
-.team-text {
-  margin-top: 20px;
-  color: black;
-  font-size: 28px;
-  text-align: center;
-}
+  .team-text {
+    color: black;
+    font-size: 24px;
+    text-align: center;
+    margin: 10px 0 20px 0;
+  }
 
-.loader-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
-  z-index: 1000; /* Certifique-se de que o loader apareça acima de outros elementos */
-}
-
-.loader {
-  border: 6px solid #f3f3f3; /* Cor de fundo do círculo */
-  border-top: 6px solid #3498db; /* Cor da borda superior (efeito de giro) */
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite; /* Animação de rotação */
-}
-
-/* Animação de rotação */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  .loader {
+    width: 40px;
+    height: 40px;
+  }
 }

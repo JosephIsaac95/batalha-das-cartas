@@ -15,7 +15,7 @@ export class MessagesComponent implements OnInit {
   ngOnInit() {
     setTimeout(()=>{
       this.closeModal.emit(true)
-    }, 2000)
+    }, 2500)
   }
 
 }

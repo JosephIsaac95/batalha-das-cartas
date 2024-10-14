@@ -15,6 +15,8 @@ import { Abilities } from 'src/app/interfaces/abilities';
 })
 export class BattleComponent implements OnInit {
 
+  recolherAtos: boolean = true;
+
   showDice: boolean = false;
   finalResult: string = 'Derrota';
 
@@ -158,6 +160,10 @@ export class BattleComponent implements OnInit {
     const ability = abilities[result];
 
     this.applyHability(ability, this.cardQueRolouODado);
+  }
+
+  hadnleRecolherAtos(){
+    this.recolherAtos = !this.recolherAtos;
   }
 
   acctionsInitial(){

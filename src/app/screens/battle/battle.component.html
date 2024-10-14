@@ -2,7 +2,7 @@
     <!-- Mensagens em cima na esquerda -->
     <div class="container-info">
         <div class="info">
-            <p>Turno {{acctions.turn}}</p>
+            <p>{{acctions.turn}}</p>
         </div>
     </div>
     <!-- Campo de Batalha -->
@@ -25,11 +25,9 @@
         <div class="space-card"></div>
         <div class="space-card"></div>
         <div class="space-card"></div>
-        <div class="space-card"></div>
     </div>
     <!-- Campo Aliado -->
     <div class="space-battle-cards-ally">
-        <div class="space-card"></div>
         <div class="space-card"></div>
         <div class="space-card"></div>
         <div class="space-card"></div>
@@ -50,7 +48,13 @@
         </div>
     </div>
     <!-- Mensagens em baixo na esquerda -->
-    <div class="fases" *ngIf="!turnoOponente">
+    <button *ngIf="recolherAtos" class="recolherAtos" (click)="hadnleRecolherAtos()">
+        <p>AÇÕES</p>
+    </button>
+    <div class="fases" *ngIf="!turnoOponente && !recolherAtos">
+        <button class="closeActs" (click)="hadnleRecolherAtos()">
+            <p>X</p>
+        </button>
         <button class="btn-fases btn-itens btn-ativo-itens" (click)="onAcction(1)">
             <p class="my-turn-text txt-itens">Você pode<br/>GIRAR OS DADOS!</p>
         </button>
