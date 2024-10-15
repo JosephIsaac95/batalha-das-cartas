@@ -467,6 +467,7 @@
         display: flex;
         width: 290px;
         justify-content: space-between;
+        margin-bottom: 60px;
     }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from '../../interfaces/character';
 import teamOne from '../../mock/team-one.json'
@@ -13,7 +13,9 @@ import { Abilities } from 'src/app/interfaces/abilities';
   templateUrl: './battle.component.html',
   styleUrls: ['./battle.component.css']
 })
-export class BattleComponent implements OnInit {
+export class BattleComponent implements OnInit, OnDestroy {
+
+  audioPlayer: HTMLAudioElement;
 
   recolherAtos: boolean = true;
 
@@ -50,6 +52,13 @@ export class BattleComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+
+    this.audioPlayer = new Audio('assets/sounds/battle-song.mp3');
+
+    this.audioPlayer.volume = 0.5;
+    this.audioPlayer.loop = true;
+    this.audioPlayer.play();
+
     this.activatedRoute.paramMap.subscribe(params=>{
       this.team = +params.get('team')!;
 
@@ -63,6 +72,10 @@ export class BattleComponent implements OnInit {
     });
 
     this.acctionsInitial();
+  }
+
+  ngOnDestroy(): void {
+    this.audioPlayer.pause();
   }
 
   rollDice(character: Acctions): void {

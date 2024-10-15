@@ -1,10 +1,4 @@
 <div class="background-image-div">
-    <!-- Mensagens em cima na esquerda -->
-    <div class="container-info">
-        <div class="info">
-            <p>{{acctions.turn}}</p>
-        </div>
-    </div>
     <!-- Campo de Batalha -->
     <!-- Oponente -->
     <div class="space-opponent-cards">
@@ -19,20 +13,6 @@
             ></mini-card>
         </div>
     </div>
-    <!-- Campo Oponente -->
-    <div class="space-battle-cards-opponent">
-        <div class="space-card"></div>
-        <div class="space-card"></div>
-        <div class="space-card"></div>
-        <div class="space-card"></div>
-    </div>
-    <!-- Campo Aliado -->
-    <div class="space-battle-cards-ally">
-        <div class="space-card"></div>
-        <div class="space-card"></div>
-        <div class="space-card"></div>
-        <div class="space-card"></div>
-    </div>
     <!-- Aliado -->
     <div class="space-ally-cards">
         <div class="space-card" *ngFor="let card of acctions.ally">
@@ -45,6 +25,12 @@
                 [battle]="battle"
                 [opponentTurn]="turnoOponente"
             ></mini-card>
+        </div>
+    </div>
+    <!-- Mensagens em cima na esquerda -->
+    <div class="container-info">
+        <div class="info">
+            <p>{{acctions.turn}}</p>
         </div>
     </div>
     <!-- Mensagens em baixo na esquerda -->
@@ -77,11 +63,6 @@
 
 <!-- Mensagens de batalha-->
 <messages-battle *ngIf="showMsg" [msg]="msg" (closeModal)="closeMsg()"></messages-battle>
-
-<!-- Som da batalha-->
-<audio autoplay loop>
-    <source src="assets/sounds/battle-song.mp3" type="audio/mp3">
-</audio>
 
 <dice *ngIf="showDice" (close)="closeDiceModal($event)"></dice>
 
