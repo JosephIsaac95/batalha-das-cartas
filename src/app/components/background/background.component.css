@@ -1,0 +1,15 @@
+.background {
+    position: fixed; /* Permite que o fundo cubra toda a tela */
+    top: -60px;
+    left: 0;
+    width: 100%; /* 100% da largura da tela */
+    height: 110vh; /* 100% da altura da tela */
+    z-index: -1; /* Garante que fique atrás de outros elementos */
+    background: linear-gradient(to bottom, #c1c1c1, #ababab);
+}
+
+svg {
+    width: 100%; /* Ajusta o SVG para cobrir toda a tela */
+    height: 100%; /* Ajusta o SVG para cobrir toda a tela */
+    
+}

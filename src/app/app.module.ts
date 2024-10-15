@@ -11,6 +11,7 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { DiceComponent } from './components/dice/dice.component';
 import { GameOverComponent } from './components/game-over/game-over.component';
 import { BattleAnimationComponent } from './components/battle-animation/battle-animation.component';
+import { BackgroundComponent } from './components/background/background.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BattleAnimationComponent } from './components/battle-animation/battle-a
     MessagesComponent,
     DiceComponent,
     GameOverComponent,
-    BattleAnimationComponent
+    BattleAnimationComponent,
+    BackgroundComponent
   ],
   imports: [
     BrowserModule,
