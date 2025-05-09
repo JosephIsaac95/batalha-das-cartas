@@ -10,7 +10,7 @@ import { Character } from 'src/app/interfaces/character';
 export class MiniCardComponent implements OnInit, OnChanges {
 
   @Output() characterDetails = new EventEmitter<Acctions>();
-  @Output() rollDice = new EventEmitter<Acctions>()
+  @Output() showAbility = new EventEmitter<Acctions>()
   @Output() attack = new EventEmitter<Acctions>()
   @Output() foiAtacado = new EventEmitter<Acctions>()
   @Input() character: Acctions;
@@ -61,9 +61,9 @@ export class MiniCardComponent implements OnInit, OnChanges {
       case 'atk':
         this.atacouEmit();
         break;
-      case 'dice':
-      this.rollDiceEmit();
-          break;
+      case 'ability':
+        this.showAbilityEmit();
+        break;
       default:
         this.showDetails();
         break;
@@ -74,8 +74,8 @@ export class MiniCardComponent implements OnInit, OnChanges {
     this.characterDetails.emit(this.character)
   }
 
-  rollDiceEmit(){
-    this.rollDice.emit(this.character);
+  showAbilityEmit(){
+    this.showAbility.emit(this.character);
   }
 
   atacouEmit(){

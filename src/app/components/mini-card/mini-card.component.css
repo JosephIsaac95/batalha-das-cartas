@@ -112,11 +112,11 @@
     background: linear-gradient(to left, #EE0000, #FF2200);
 }
 
-.btn-dice {
+.btn-ability {
     background: linear-gradient(to right, #72B140, #314B1B);
 }
 
-.btn-dice:hover {
+.btn-ability:hover {
     background: linear-gradient(to left, #72B140, #314B1B);
 }
 
@@ -144,14 +144,14 @@
 
 /* CSS DO DADO */
 
-.dice-container {
+.ability-container {
     position: absolute;
     top: 0;
     display: flex;
     width: 100%;
 }
 
-.dice {
+.ability {
     width: 20px;
     height: 20px;
     border-radius: 2px;
@@ -164,11 +164,11 @@
     color: white;
 }
 
-.dice-green {
+.ability-green {
     background-color: green;
 }
 
-.dice-red {
+.ability-red {
     background-color: #EE0000;
 }
 

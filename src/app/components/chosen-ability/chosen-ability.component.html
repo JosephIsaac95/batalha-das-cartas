@@ -1,0 +1,11 @@
+<div class="modal">
+    <div *ngFor="let ability of character.personagem.skills">
+    <button class="card" [ngClass]="{'selectable': character.mana < ability.coast}" (click)="selectAbility(ability)">
+        <p>{{ability.title}}</p>
+        <div class="flex">
+            <p>{{ability.text}}</p>
+            <p>{{ability.coast}}</p>
+        </div>
+    </button>
+    </div>
+</div>

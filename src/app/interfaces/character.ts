@@ -5,11 +5,13 @@ export interface Character {
     backgroundBottom: string;
     atk: number;
     health: number;
-    skillsAtk?: Skill[];
-    skillsDefense?: Skill[];
+    skills: Skill[];
 }
 
-interface Skill {
+export interface Skill {
+    id: number;
     title: string;
-    text: string
+    text: string;
+    effect: string;
+    coast: number;
 }

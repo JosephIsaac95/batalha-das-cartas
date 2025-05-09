@@ -6,8 +6,15 @@
         "backgroundBottom": "#E5D0B1",
         "atk": 12,
         "health": 60,
-        "skillsAtk":[],
-        "skillsDefense":[]
+        "skills": [
+            {
+                "id": 1,
+                "title": "string",
+                "text": "string",
+                "effect": "string",
+                "coast": 1
+            }
+        ]
     },
     {
         "url": "assets/cards/ninja-branco.jpeg",
@@ -16,8 +23,15 @@
         "backgroundBottom": "#E5D0B1",
         "atk": 8,
         "health": 60,
-        "skillsAtk":[],
-        "skillsDefense":[]
+        "skills": [
+            {
+                "id": 1,
+                "title": "string",
+                "text": "string",
+                "effect": "string",
+                "coast": 1
+            }
+        ]
     },
     {
         "url": "assets/cards/ninja-roxa.jpeg",
@@ -26,7 +40,14 @@
         "backgroundBottom": "#F7B5E1",
         "atk": 8,
         "health": 60,
-        "skillsAtk":[],
-        "skillsDefense":[]
+        "skills": [
+            {
+                "id": 1,
+                "title": "string",
+                "text": "string",
+                "effect": "string",
+                "coast": 1
+            }
+        ]
     }
 ]

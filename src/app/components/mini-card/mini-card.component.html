@@ -15,15 +15,15 @@
         <button class="btn" (click)="optionSelected('atk')" [ngClass]="{'no-action': character.jaAtacou, 'btn-atk': !character.jaAtacou}">
             <p class="text-btn">Atacar!</p>
         </button>
-        <button class="btn" (click)="optionSelected('dice')" [ngClass]="{'no-action': character.jaRolouDado, 'btn-dice': !character.jaRolouDado}">
-            <p class="text-btn">Girar Dado</p>
+        <button class="btn" (click)="optionSelected('ability')" [ngClass]="{'no-action': character.jaRolouDado, 'btn-ability': !character.jaRolouDado}">
+            <p class="text-btn">Especial</p>
         </button>
         <button class="btn btn-details" (click)="optionSelected('details')">
             <p class="text-btn">Detalhes</p>
         </button>
     </div>
-    <div class="dice-container" *ngIf=" character.habAtiva !== 0">
-        <div class="dice" [ngClass]="{'dice-green': character.habAtiva > 2, 'dice-red': character.habAtiva < 3}">
+    <div class="ability-container" *ngFor="let habAtiva of character.habAtiva">
+        <div class="ability" [ngClass]="{'ability-green': habAtiva > 2, 'ability-red': habAtiva < 3}">
             <p>{{character.habAtiva}}</p>
         </div>
     </div>

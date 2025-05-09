@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     this.btnPlayAudio.play();
     setTimeout(()=>{
       this.load = false;
-      this.router.navigate(['/battle', this.selectedButtonIndex]);
+      this.router.navigate(['/battle-cards', this.selectedButtonIndex]);
     }, 500)
   }
 }

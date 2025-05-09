@@ -5,7 +5,7 @@ import teamOne from '../../mock/team-one.json'
 import teamTwo from '../../mock/team-two.json'
 import { Battle } from 'src/app/interfaces/battle';
 import { Acctions } from 'src/app/interfaces/acctions';
-import { abilities } from 'src/app/services/abilities.service';
+import { abilities, skillsNinjaAzul, skillsNinjaRosa } from 'src/app/services/abilities.service';
 import { Abilities } from 'src/app/interfaces/abilities';
 
 @Component({
@@ -93,11 +93,30 @@ export class BattleComponent implements OnInit, OnDestroy {
     this.cardQueRolouODado = ch;
   }
 
-  applyHability(ability: Abilities, target: Acctions){
-    console.log('aplicou a habilidade', ability, target);
-    ability.apply(target);
-    this.msg = ability.description
-    this.showMsg = true;
+  applyHability(ability: Abilities, target: Acctions, result: number){
+    console.log('target', target.personagem.url)
+    switch(target.personagem.url){
+      case 'assets/cards/ninja-rosa.jpeg':
+        skillsNinjaRosa[result].apply(target);
+        this.msg = skillsNinjaRosa[result].description
+        this.showMsg = true;
+        break;
+      case 'assets/cards/ninja-azul.jpeg':
+        if(result === 4){
+          let oponentesVivos = this.acctions.opponent.filter(op => op.health > 0)
+          skillsNinjaAzul[result].apply(oponentesVivos)
+        } else{
+          skillsNinjaAzul[result].apply(target)
+        }
+        this.msg = skillsNinjaAzul[result].description
+        this.showMsg = true;
+        break;
+      default:
+        ability.apply(target);
+        this.msg = ability.description
+        this.showMsg = true;
+        break;
+    }
   }
 
   
@@ -113,11 +132,7 @@ export class BattleComponent implements OnInit, OnDestroy {
       ch = this.acctions.ally.find(ally => ally.personagem.url === character.personagem.url);
     }else{
       ch = this.acctions.opponent.find(op => op.personagem.url === character.personagem.url);
-      console.log('7 - IA quemAtacou', ch);
     }
-
-    console.log('8 - Saiu do quemAtacou');
-
   }
 
   foiAtacado(character: Acctions){
@@ -143,7 +158,6 @@ export class BattleComponent implements OnInit, OnDestroy {
     }else{
       ally = this.acctions.ally.find(op => op.personagem.url === character.personagem.url);
       opponent = this.acctions.opponent.find(al => al.personagem.url === this.cardQueAtacou.personagem.url)
-      console.log('9 - IA foiAtacado', character, ally, opponent);
 
       //O oponente perde a vida, o card que atacou não pode mais atacar
       ally.health -= this.cardQueAtacou.atk;
@@ -168,11 +182,11 @@ export class BattleComponent implements OnInit, OnDestroy {
     this.showDice = false;
     //Aqui só vou fazer a ideia de colocar os dados, mas é preciso olhar regra a regra pra ver o que acontece
     //P. ex.: Uma habilidade pode negar outra, fora as habilidades que acabam em determinado turno.
-    this.cardQueRolouODado.habAtiva = result;
+    this.cardQueRolouODado.habAtiva.push(result);
 
     const ability = abilities[result];
 
-    this.applyHability(ability, this.cardQueRolouODado);
+    this.applyHability(ability, this.cardQueRolouODado, result);
   }
 
   hadnleRecolherAtos(){
@@ -190,19 +204,59 @@ export class BattleComponent implements OnInit, OnDestroy {
       this.acctions.ally[i] = {
         atk: this.allyCards[i].atk,
         health: this.allyCards[i].health,
-        habAtiva: 0,
+        habAtiva: [],
         jaAtacou: false,
         jaRolouDado: false,
-        personagem: this.allyCards[i]
+        personagem: this.allyCards[i],
+        esquiva: false,
+        selecionavel: true,
+        mana: 2,
+        contador: {
+          atk: 0,
+          hab1: 0,
+          hab2: 0,
+          hab3: 0,
+          hab4: 0,
+          hab5: 0,
+          hab6: 0,
+        },
+        debuff: {
+          contadorNaoAtaca: 0,
+          contadorNaoRolaDados: 0,
+          contadorRecebeDano: 0,
+          naoAtaca: false,
+          naoRolaDados: false,
+          recebeDano: 0
+        }
       };
   
       this.acctions.opponent[i] = {
         atk: this.opponentCards[i].atk,
         health: this.opponentCards[i].health,
-        habAtiva: 0,
+        habAtiva: [],
         jaAtacou: false,
         jaRolouDado: false,
-        personagem: this.opponentCards[i]
+        personagem: this.opponentCards[i],
+        esquiva: false,
+        selecionavel: true,
+        mana: 2,
+        contador: {
+          atk: 0,
+          hab1: 0,
+          hab2: 0,
+          hab3: 0,
+          hab4: 0,
+          hab5: 0,
+          hab6: 0,
+        },
+        debuff: {
+          contadorNaoAtaca: 0,
+          contadorNaoRolaDados: 0,
+          contadorRecebeDano: 0,
+          naoAtaca: false,
+          naoRolaDados: false,
+          recebeDano: 0
+        }
       };
     }
   }
@@ -252,16 +306,17 @@ export class BattleComponent implements OnInit, OnDestroy {
   }
 
   resetAbilities() {
-    if (this.acctions.turn % 2 === 0){
+    if (this.acctions.turn % 2 === 1){
       this.acctions.opponent.forEach(opponent => {
-        opponent.habAtiva = 0; // Volta a zero
+        opponent.habAtiva = []; // Volta a zero
         opponent.jaRolouDado = false; // Define como falso
         opponent.jaAtacou = false;
         opponent.atk = opponent.personagem.atk;
       });
+
     } else {
       this.acctions.ally.forEach(ally => {
-        ally.habAtiva = 0; // Volta a zero
+        ally.habAtiva = []; // Volta a zero
         ally.jaRolouDado = false; // Define como falso
         ally.jaAtacou = false;
         ally.atk = ally.personagem.atk;
@@ -300,22 +355,16 @@ export class BattleComponent implements OnInit, OnDestroy {
       let opVivos = 0;
   
       for (const op of oppVivos) {
-        console.log('1 - IA character', op.personagem.name);
-  
         opVivos += 1;
-        console.log('2 - IA vivos', opVivos);
   
         // Rola o dado se necessário
         if (!op.jaRolouDado) {
-          console.log('3 - IA vai rolar o dado');
-          
           await this.wait(2000); // Espera 2 segundos
           await this.rollDice(op);
         }
   
         // Ataca se não tiver atacado
         if (!op.jaAtacou) {
-          console.log('6 - IA Atacou');
           await this.wait(5000); // Espera 5 segundos
           await this.quemAtacou(op);
   
@@ -325,7 +374,6 @@ export class BattleComponent implements OnInit, OnDestroy {
           this.foiAtacado(target);
         }
   
-        console.log('Entrou no timeout 1');
         await this.wait(2000); // Pausa final entre ações
       }
 
@@ -335,7 +383,6 @@ export class BattleComponent implements OnInit, OnDestroy {
       }
   
       if (opVivos === oppVivos.length) {
-        console.log('Turno finalizado.');
         this.endTurn();
       }
     }
@@ -369,7 +416,6 @@ export class BattleComponent implements OnInit, OnDestroy {
     const opponentLost = this.acctions.opponent.every(op => op.health <= 0);
 
     if (userLost) {
-        console.log("Você perdeu!");
         this.finalResult = 'Derrota!'
         this.endGame(); // Chama a função para finalizar o jogo com derrota
     } else if (opponentLost) {
@@ -379,7 +425,7 @@ export class BattleComponent implements OnInit, OnDestroy {
 
     if(userLost || opponentLost)
       this.endGameBool = true;
-}
+  }
 
   endGame() {
     

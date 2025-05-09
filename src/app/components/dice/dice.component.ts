@@ -18,14 +18,12 @@ export class DiceComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('entrou no componente dado');
     this.rollDiceAudio = new Audio('assets/sounds/dice.mp3');
     this.animacaoGiroDado();
     
   }
 
   animacaoGiroDado(){
-    console.log('entrou na animação do dado');
     this.rollDiceAudio.play();
     const randomNumber = Math.floor(Math.random() * 6) + 1;
   

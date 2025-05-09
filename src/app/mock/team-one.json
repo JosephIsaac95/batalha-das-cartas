@@ -6,8 +6,15 @@
         "backgroundBottom": "#F7DEE2",
         "atk": 15,
         "health": 60,
-        "skillsAtk": [],
-        "skillsDefense": []
+        "skills": [
+            {
+                "id": 1,
+                "title": "string",
+                "text": "string",
+                "effect": "string",
+                "coast": 1
+            }
+        ]
     },
     {
         "url": "assets/cards/ninja-azul.jpeg",
@@ -16,8 +23,29 @@
         "backgroundBottom": "#E1BDA3",
         "atk": 7,
         "health": 60,
-        "skillsAtk":[],
-        "skillsDefense":[]
+        "skills": [
+            {
+                "id": 1,
+                "title": "string",
+                "text": "string",
+                "effect": "string",
+                "coast": 1
+            },
+            {
+                "id": 2,
+                "title": "poder",
+                "text": "poder",
+                "effect": "poder",
+                "coast": 2
+            },
+            {
+                "id": 3,
+                "title": "especial",
+                "text": "especial",
+                "effect": "especial",
+                "coast": 3
+            }
+        ]
     },
     {
         "url": "assets/cards/ninja-laranja.jpeg",
@@ -26,7 +54,14 @@
         "backgroundBottom": "#FDFF6B",
         "atk": 10,
         "health": 60,
-        "skillsAtk":[],
-        "skillsDefense":[]
+        "skills": [
+            {
+                "id": 1,
+                "title": "string",
+                "text": "string",
+                "effect": "string",
+                "coast": 1
+            }
+        ]
     }
 ]

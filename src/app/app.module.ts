@@ -12,6 +12,8 @@ import { DiceComponent } from './components/dice/dice.component';
 import { GameOverComponent } from './components/game-over/game-over.component';
 import { BattleAnimationComponent } from './components/battle-animation/battle-animation.component';
 import { BackgroundComponent } from './components/background/background.component';
+import { BattleCardsComponent } from './screens/battle-cards/battle-cards.component';
+import { ChosenAbilityComponent } from './components/chosen-ability/chosen-ability.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { BackgroundComponent } from './components/background/background.componen
     DiceComponent,
     GameOverComponent,
     BattleAnimationComponent,
-    BackgroundComponent
+    BackgroundComponent,
+    BattleCardsComponent,
+    ChosenAbilityComponent
   ],
   imports: [
     BrowserModule,
